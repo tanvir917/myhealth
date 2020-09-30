@@ -50,14 +50,21 @@ import * as authActions from '../actionCreators/authM';
        formIsValid: false
    });
 
-    const signUpHandler = () => {
-       console.log('entering signup');
-       dispatch(authActions.signup(
-           formState.inputValues.email,
-           formState.inputValues.password
-       ));
-       console.log('finishing signup action');
-   }
+   const authHandler = () => {	         
+        let action;	         
+        if (isSignup) {		             
+            action = authActions.signup(	                 
+            formState.inputValues.email,     
+            formState.inputValues.password		             
+        );		         
+        } else {
+            action = authActions.login(
+                formState.inputValues.email,
+                formState.inputValues.password
+            );
+        }
+        dispatch(action);
+    };
 
     const inputChangeHandler = useCallback((inputIdentifier, inputValue, inputValidity) => {
        dispatchFormState({
@@ -97,19 +104,20 @@ import * as authActions from '../actionCreators/authM';
                              initialValue=""
                          />
                          <View style={styles.buttonContainer}>
-                             <Button 
-                                title="Login" 
-                                color={Colors.primary} 
-                                onPress={signUpHandler}
+                         <Button 
+                         title={isSignup ? "Sign Up" : "Login"}
+                         color={Colors.primary} 
+                         onPress={authHandler}
                              />
                          </View>
                          <View style={styles.buttonContainer}>
-                             <Button 
-                                 title="Switch to Sign Up" 
-                                 color={Colors.accent} 
-                                 onPress={() => {}}
-
-                              />
+                         <Button 
+                            title={`Switch to ${isSignup ? 'Login' : 'Sign Up'}`}
+                            color={Colors.accent} 
+                            onPress={() => {
+                                setIsSignup(prevState => !prevState)
+                            }} 
+                         />
                          </View>
                      </ScrollView>
                  </Card>
