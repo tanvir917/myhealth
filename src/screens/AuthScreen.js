@@ -1,12 +1,12 @@
-import React, { useReducer, useCallback } from 'react';
+import React, { useReducer, useCallback, useState } from 'react';
  import { View, ScrollView, StyleSheet, KeyboardAvoidingView, Button } from 'react-native';
- import { LinearGradient } from 'expo-linear-gradient';
+ import { LinearGradient } from 'react-native-linear-gradient';
  import { useDispatch } from 'react-redux';
 
-  import Input from '../../components/UI/Input';
- import Card from '../../components/UI/Card';
- import { ScrollView } from 'react-native-gesture-handler';
- import Colors from '../../constants/Colors';
+  import Input from '../components/UI/Input';
+ import Card from '../components/UI/Card';
+ //import { ScrollView } from 'react-native-gesture-handler';
+ import Colors from '../constants/Colors';
 import * as authActions from '../actionCreators/authM';
 
  const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
@@ -35,6 +35,7 @@ import * as authActions from '../actionCreators/authM';
  }
 
   const AuthScreen = props => {
+    const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
     // const [state, dispatch] = useReducer(reducer, initialState);
     const [formState, dispatchFormState ] =  useReducer(formReducer, {
@@ -68,11 +69,8 @@ import * as authActions from '../actionCreators/authM';
    }, [dispatchFormState]);
      return ( 
          <KeyboardAvoidingView 
-             behavior='padding'
-             keyboardVerticalOffset={50}
              style={styles.screen}
          >
-             <LinearGradient colors={['#ffedff','#ffe3ff']} style={styles.gradient}>
                  <Card style={styles.authContainer}>
                      <ScrollView>
                          <Input 
@@ -102,7 +100,7 @@ import * as authActions from '../actionCreators/authM';
                              <Button 
                                 title="Login" 
                                 color={Colors.primary} 
-                                onPress={signupHandler}
+                                onPress={signUpHandler}
                              />
                          </View>
                          <View style={styles.buttonContainer}>
@@ -115,7 +113,6 @@ import * as authActions from '../actionCreators/authM';
                          </View>
                      </ScrollView>
                  </Card>
-             </LinearGradient>
          </KeyboardAvoidingView>
      )
  };
@@ -134,9 +131,9 @@ import * as authActions from '../actionCreators/authM';
          alignItems: 'center'
      },
      authContainer: {
-         width: '80%',
-         maxWidth: 400,
-         maxHeight: 400,
+         width: '100%',
+         maxWidth: 500,
+         maxHeight: 800,
          padding: 20
      },
      buttonContainer: {

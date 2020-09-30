@@ -7,12 +7,13 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from '@react-native-community/async-storage'
 import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
+import thunk from 'redux-thunk';
 
 import rootReducer from '../reducers'
 import * as actionCreators from '../actionCreators'
 
 const sagaMiddleware = createSagaMiddleware()
-const middlewares = [sagaMiddleware]
+const middlewares = [sagaMiddleware, thunk]
 if (__DEV__) {
   middlewares.push(logger)
 }

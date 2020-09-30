@@ -8,31 +8,16 @@ import Users from './containers/Users'
 import CallScreen from './containers/CallScreen'
 import Info from './containers/Info'
 import { navigationHeader } from './theme'
+import AuthScreen from '../src/screens/AuthScreen'
+
+const AuthNavigator = createStackNavigator({
+  Auth: AuthScreen
+}, {
+  defaultNavigationOptions: navigationHeader
+});
 
 const AppNavigator = createSwitchNavigator({
-  CheckAuth,
-  Auth: createStackNavigator({
-    Login,
-    Info,
-  }, {
-    initialRouteName: 'Login',
-    defaultNavigationOptions: navigationHeader,
-  }),
-  WebRTC: createSwitchNavigator({
-    CheckConnection,
-    CallScreen,
-    Main: createStackNavigator({
-      Users,
-      Info,
-    }, {
-      initialRouteName: 'Users',
-      defaultNavigationOptions: navigationHeader,
-    })
-  }, {
-    initialRouteName: 'CheckConnection'
-  })
-}, {
-  initialRouteName: 'CheckAuth'
+  Auth: AuthNavigator
 })
 
 export default createAppContainer(AppNavigator)
