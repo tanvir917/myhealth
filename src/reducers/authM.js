@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP } from '../actions/auth';
+import { LOGIN, SIGNUP } from '../actionCreators/authM';
 
   const initialState = {
      token: null,

@@ -9,6 +9,7 @@ import CallScreen from './containers/CallScreen'
 import Info from './containers/Info'
 import { navigationHeader } from './theme'
 import AuthScreen from '../src/screens/AuthScreen'
+import doctorsList from '../src/screens/doctors/doctorsList'
 
 const AuthNavigator = createStackNavigator({
   Auth: AuthScreen
@@ -17,7 +18,8 @@ const AuthNavigator = createStackNavigator({
 });
 
 const AppNavigator = createSwitchNavigator({
-  Auth: AuthNavigator
+  Auth: AuthNavigator,
+  DoctorsList: doctorsList
 })
 
 export default createAppContainer(AppNavigator)

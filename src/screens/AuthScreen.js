@@ -2,6 +2,7 @@ import React, { useReducer, useCallback, useEffect, useState } from 'react';
  import { View, ScrollView, StyleSheet, ActivityIndicator, Alert, KeyboardAvoidingView, Button } from 'react-native';
  import { LinearGradient } from 'react-native-linear-gradient';
  import { useDispatch } from 'react-redux';
+ import doctorsList from '../screens/doctors/doctorsList';
 
   import Input from '../components/UI/Input';
  import Card from '../components/UI/Card';
@@ -75,6 +76,7 @@ import * as authActions from '../actionCreators/authM';
          setIsLoading(true);
          try {
              await dispatch(action);
+             props.navigation.navigate('DoctorsList');
          } catch(err) {
              setError(err.message);
          }
@@ -129,13 +131,6 @@ import * as authActions from '../actionCreators/authM';
                              />)}
                          </View>
                          <View style={styles.buttonContainer}>
-                         <Button 
-                            title={`Switch to ${isSignup ? 'Login' : 'Sign Up'}`}
-                            color={Colors.accent} 
-                            onPress={() => {
-                                setIsSignup(prevState => !prevState)
-                            }} 
-                         />
                          <Button 
                             title={`Switch to ${isSignup ? 'Login' : 'Sign Up'}`}
                             color={Colors.accent} 
