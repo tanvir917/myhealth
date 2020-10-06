@@ -1,7 +1,7 @@
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
 
-  export const signup = (email, password) => {
+  export const signup = (name, email, password) => {
      return async dispatch => {
          try {
              const response = await fetch(
@@ -12,6 +12,7 @@ export const LOGIN = 'LOGIN';
                          'Content-Type': 'application/json'
                      },
                      body: JSON.stringify({
+                         name: name,
                          email: email,
                          password: password,
                          returnSecureToken: true

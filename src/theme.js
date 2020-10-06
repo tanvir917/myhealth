@@ -9,7 +9,7 @@ export const colors = {
   lightGray: '#eeeeee',
   lightGreen: '#00cc4c',
   mutedText: '#72819a',
-  primary: '#3978fc',
+  primary: 'white',
   primaryDisabled: '#99a9c6',
   redBackground: '#ef3248',
   transparent: 'transparent',

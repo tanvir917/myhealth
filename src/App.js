@@ -33,10 +33,6 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.primary}
-          barStyle="light-content"
-        />
         <View style={styles.navigatorView}>
           <Navigator ref={NavigationService.init} />
         </View>

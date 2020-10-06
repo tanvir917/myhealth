@@ -7,6 +7,7 @@ import info from './info'
 import users from './users'
 import webrtc from './webrtc'
 import authM from './authM';
+import menus from './menus'
 
 export default combineReducers({
   app,
@@ -15,5 +16,6 @@ export default combineReducers({
   info,
   users,
   webrtc,
-  authM
+  authM,
+  menus
 })

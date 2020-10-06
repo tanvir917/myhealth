@@ -43,6 +43,7 @@ import * as authActions from '../actionCreators/authM';
     // const [state, dispatch] = useReducer(reducer, initialState);
     const [formState, dispatchFormState ] =  useReducer(formReducer, {
        inputValues: {
+           name: '',
            email: '',
            password: ''
        }, 
@@ -62,7 +63,8 @@ import * as authActions from '../actionCreators/authM';
    const authHandler = async () => {	         
         let action;	         
         if (isSignup) {		             
-            action = authActions.signup(	                 
+            action = authActions.signup(
+            formState.inputValues.name,	                 
             formState.inputValues.email,     
             formState.inputValues.password		             
         );		         
@@ -76,7 +78,7 @@ import * as authActions from '../actionCreators/authM';
          setIsLoading(true);
          try {
              await dispatch(action);
-             props.navigation.navigate('DoctorsList');
+             props.navigation.navigate('PatientsOverviewScreen');
          } catch(err) {
              setError(err.message);
          }
@@ -97,6 +99,17 @@ import * as authActions from '../actionCreators/authM';
          >
                  <Card style={styles.authContainer}>
                      <ScrollView>
+                     {isSignup ? (
+                        <Input 
+                            id="name" 
+                            label="User Name" 
+                            keyboardType="default"
+                            required
+                            autoCapitalize="none"
+                            errorText="Please enter a valid name."
+                            onInputChange={inputChangeHandler}
+                            initialValue=""
+                        />): (null)}
                          <Input 
                              id="email" 
                              label="E-Mail" 
