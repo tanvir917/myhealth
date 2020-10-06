@@ -88,26 +88,26 @@ const PatientsOverviewScreen = props => {
         // console.log(arrayholder);
       };*/
 
-    if (error) {
-        return (
-            <View style={styles.centered}>
-                <Text>An error occurred!</Text>
-                <Button 
-                    title="Try again" 
-                    onPress={loadProducts} 
-                    color={Colors.primary} 
-                />
-            </View>
-        )
-    }
+    // if (error) {
+    //     return (
+    //         <View style={styles.centered}>
+    //             <Text>An error occurred!</Text>
+    //             <Button 
+    //                 title="Try again" 
+    //                 onPress={loadProducts} 
+    //                 color={Colors.primary} 
+    //             />
+    //         </View>
+    //     )
+    // }
 
-    if (isLoading) {
-        return (
-            <View style={styles.centered}>
-                <ActivityIndicator size='large' color={Colors.primary} />
-            </View>
-        )
-    }
+    // if (isLoading) {
+    //     return (
+    //         <View style={styles.centered}>
+    //             <ActivityIndicator size='large' color={Colors.primary} />
+    //         </View>
+    //     )
+    // }
 
     /*if (!isLoading && products.length === 0) {
         return (
@@ -140,12 +140,13 @@ const PatientsOverviewScreen = props => {
 
 PatientsOverviewScreen.navigationOptions = navData => {
     return {
-        headerTitle: 'Hello User',
+        headerTitle: 'My Health',
         headerLeft: (
             <HeaderButtons HeaderButtonComponent={HeaderButton} >
                 <Item  
-                    title='Menu' 
-                    iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'} 
+                    title='Menu'
+                    icon={"add"} 
+                    iconName={"add"} 
                     onPress= {() => {
                         navData.navigation.toggleDrawer();
                     }}
