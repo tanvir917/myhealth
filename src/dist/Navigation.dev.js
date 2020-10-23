@@ -33,12 +33,15 @@ var _doctorsList = _interopRequireDefault(require("../src/screens/doctors/doctor
 
 var _PatientsOverviewScreen = _interopRequireDefault(require("../src/screens/patients/PatientsOverviewScreen"));
 
+var _DoctorListScreen = _interopRequireDefault(require("../src/screens/doctors/DoctorListScreen"));
+
 var _Colors = _interopRequireDefault(require("./constants/Colors"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
-  PatientsOverviewScreen: _PatientsOverviewScreen["default"]
+  PatientsOverviewScreen: _PatientsOverviewScreen["default"],
+  DoctorListScreen: _DoctorListScreen["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]
@@ -46,7 +49,8 @@ var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   defaultNavigationOptions: _theme.navigationHeader
 });
 var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
-  ProductsNavigator: ProductsNavigator
+  ProductsNavigator: ProductsNavigator,
+  DoctorListScreen: _DoctorListScreen["default"]
 });
 var AppNavigator = (0, _reactNavigation.createSwitchNavigator)({
   MenusNavigator: MenusNavigator

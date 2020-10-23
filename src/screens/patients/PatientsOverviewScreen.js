@@ -7,7 +7,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 //import menusAction from '../../actionCreators/menus';
 import MenuItem from '../../components/Patients/MenuItem';
 import HeaderButton from '../../components/UI/HeaderButton';
-import Colors from '../../constants/Colors';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const PatientsOverviewScreen = props => {
     const [isLoading, setIsLoading] = useState(false);
@@ -141,23 +141,18 @@ const PatientsOverviewScreen = props => {
 PatientsOverviewScreen.navigationOptions = navData => {
     return {
         headerTitle: 'My Health',
-        headerLeft: (
-            <HeaderButtons HeaderButtonComponent={HeaderButton} >
-                <Item  
-                    title='Menu'
-                    icon={"add"} 
-                    iconName={"add"} 
-                    onPress= {() => {
-                        navData.navigation.toggleDrawer();
-                    }}
-                />
-            </HeaderButtons>
-        ),
+        headerLeft:
+            <Icon
+                onPress={() => navData.navigation.toggleDrawer()}
+                style={[{ color: 'blue', marginLeft: 12 }]}
+                size={24}
+                name={'menu'}
+            />,
         headerRight: (
             <HeaderButtons HeaderButtonComponent={HeaderButton} >
                 <Item  
                     title='Cart' 
-                    iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'} 
+                    iconName={Platform.OS === 'android' ? 'menu' : 'menu'} 
                     onPress= {() => {
                         //navData.navigation.navigate('Cart')
                     }}
