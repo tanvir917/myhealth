@@ -41,7 +41,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   PatientsOverviewScreen: _PatientsOverviewScreen["default"],
-  DoctorListScreen: _DoctorListScreen["default"]
+  DoctorListScreen: _DoctorListScreen["default"],
+  doctorsList: _doctorsList["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]
@@ -50,6 +51,7 @@ var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
 });
 var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
   ProductsNavigator: ProductsNavigator,
+  PatientsOverviewScreen: _PatientsOverviewScreen["default"],
   DoctorListScreen: _DoctorListScreen["default"]
 });
 var AppNavigator = (0, _reactNavigation.createSwitchNavigator)({

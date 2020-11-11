@@ -20,7 +20,8 @@ import Colors from './constants/Colors'
 const ProductsNavigator = createStackNavigator(
   {
     PatientsOverviewScreen: PatientsOverviewScreen,
-    DoctorListScreen: DoctorListScreen
+    DoctorListScreen: DoctorListScreen,
+    doctorsList: doctorsList
   });
 
 const AuthNavigator = createStackNavigator({
@@ -31,6 +32,7 @@ const AuthNavigator = createStackNavigator({
 
 const MenusNavigator = createDrawerNavigator({
   ProductsNavigator: ProductsNavigator,
+  PatientsOverviewScreen: PatientsOverviewScreen,
   DoctorListScreen: DoctorListScreen  
 })
 

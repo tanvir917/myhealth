@@ -11,7 +11,8 @@ const MenuItem = props => {
     }
 
     return (
-        <Card style={styles.product} >
+        <Card 
+            style={styles.product} >
             <View style={styles.touchable}>
                 <TouchableCmp onPress={props.onSelect} useForeground>
                     <View style={styles.card}>
@@ -32,28 +33,41 @@ const MenuItem = props => {
 const styles = StyleSheet.create({
     product: {
         height: 115,
-        width: '25%',
-        margin: '3%'
+        width: '26.6%',
+        marginLeft: '5%',
+        marginBottom: '2.5%',
+        marginTop: '5%'
     },
     touchable: {
         borderRadius: 15,
         overflow: 'hidden'
     },
+    card: {
+        height: '100%',
+        width: '100%'
+    },
     imageContainer: {
-        width: '100%',
+        width: '90%',
         height: '70%',
+        margin: '4%',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        alignContent: 'center'
     },
     image: {
         width: '100%',
         height: '100%'
     },
+    details: {
+        textAlign: 'center'
+    },
     title: {
         fontFamily: 'open-sans-bold',
-        fontSize: 13,
-        marginVertical: 2
+        fontSize: 12,
+        margin: 2,
+        fontWeight: "bold",
+        color: "black"
     },
     actions: {
         flexDirection: 'row',

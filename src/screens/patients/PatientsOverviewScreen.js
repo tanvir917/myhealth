@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, FlatList, Button, Platform, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, 
+    Text, Image, FlatList, Button, Platform, ActivityIndicator, 
+    StyleSheet, TouchableHighlight, TouchableOpacity, 
+    TouchableNativeFeedback } from 'react-native';
 //import { SearchBar } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -9,6 +12,12 @@ import MenuItem from '../../components/Patients/MenuItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+let TouchableCmp = TouchableOpacity;
+
+    if(Platform.OS === 'android' && Platform.Version >= 21) {
+        TouchableCmp = TouchableNativeFeedback;
+    }
+    
 const PatientsOverviewScreen = props => {
     const [isLoading, setIsLoading] = useState(false);
     const [isRefreshing, setIsRefreshing] = useState(false);
@@ -17,9 +26,6 @@ const PatientsOverviewScreen = props => {
     const [error, setError] = useState();
     const products = useSelector(state => state.menus.availableProducts);
     //const [arrayholder, setArrayholder] = useState(products);
-    console.log('====================================');
-    console.log(products);
-    console.log('====================================');
     const dispatch = useDispatch();
     
     //const productF = products;
@@ -123,41 +129,41 @@ const PatientsOverviewScreen = props => {
             data={products} 
             numColumns={3}
             keyExtractor={item => item.id} 
-            renderItem={itemData => <MenuItem 
-                image={itemData.item.imageUrl}
-                title={itemData.item.title}
-                onViewDetail={() => {
-                    props.navigation.navigate('ProductDetail', { 
-                        productId: itemData.item.id ,
-                        productTitle: itemData.item.title
-                    });
+            renderItem={({item}) => <MenuItem 
+                image={item.imageUrl}
+                title={item.title}
+                onSelect={() => {
+                    props.navigation.navigate(item.screen);
                 }}
-                onAddToCart={() => {}}
             />} 
         />
     );
 };
 
+class LogoTitle extends React.Component {
+    render() {
+      return (
+        <Image
+          source={require('./icons8-menu-24.png')}
+          style={{ width: 30, height: 30, marginRight: 5 }}
+        />
+      );
+    }
+  }
+
 PatientsOverviewScreen.navigationOptions = navData => {
     return {
         headerTitle: 'My Health',
-        headerLeft:
-            <Icon
+        headerRight:
+            () => 
+            <TouchableHighlight 
                 onPress={() => navData.navigation.toggleDrawer()}
-                style={[{ color: 'blue', marginLeft: 12 }]}
-                size={24}
-                name={'menu'}
-            />,
-        headerRight: (
-            <HeaderButtons HeaderButtonComponent={HeaderButton} >
-                <Item  
-                    title='Cart' 
-                    iconName={Platform.OS === 'android' ? 'menu' : 'menu'} 
-                    onPress= {() => {
-                        //navData.navigation.navigate('Cart')
-                    }}
-                />
-            </HeaderButtons>)
+                activeOpacity='0'>
+            <LogoTitle
+                style={[{ color: 'blue', marginRight: 12 }]}
+                size={15}
+            /></TouchableHighlight>,
+        headerLeft: () => {},
     }
 };
 

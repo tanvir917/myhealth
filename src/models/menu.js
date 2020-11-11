@@ -1,6 +1,7 @@
 class Menu {
-    constructor(id, title, imageUrl) {
+    constructor(id, screen, title, imageUrl) {
         this.id = id;
+        this.screen = screen;
         this.title = title;
         this.imageUrl = imageUrl;  
     }

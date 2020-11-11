@@ -5,7 +5,7 @@ import {
      View,
      Text,
      Image,
-     Button,
+     TouchableHighlight,
      StyleSheet
   } from 'react-native';
 
@@ -31,26 +31,37 @@ const DoctorListScreen = props => {
                 degree={itemData.item.degree}
                 address={itemData.item.address}
                 onViewDetail={() => {
-                    props.navigation.navigate('ProductDetail', { 
-                        productId: itemData.item.id ,
-                        productTitle: itemData.item.title
-                    });
+                    props.navigation.navigate('DoctorListScreen');
                 }}
             />} 
         />
     );
   };
 
+  class LogoTitle extends React.Component {
+    render() {
+      return (
+        <Image
+          source={require('../../icons8-menu-24.png')}
+          style={{ width: 30, height: 30, marginRight: 5 }}
+        />
+      );
+    }
+  }
+
   DoctorListScreen.navigationOptions = (navData) => {
       return {
           headerTitle: 'Find Your Doctor',
-          headerLeft:
-            <Icon
+          headerRight:
+            () => 
+            <TouchableHighlight 
                 onPress={() => navData.navigation.toggleDrawer()}
-                style={[{ color: 'blue', marginLeft: 8 }]}
-                size={24}
-                name={'menu'}
-            />
+                activeOpacity={.2} >
+            <LogoTitle
+                style={[{ color: 'blue', marginRight: 5 }]}
+                size={15}
+            /></TouchableHighlight>,
+        headerLeft: () => {},
       };
   }
 
