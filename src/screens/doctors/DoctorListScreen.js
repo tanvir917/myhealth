@@ -30,8 +30,8 @@ const DoctorListScreen = props => {
                 role={itemData.item.role}
                 degree={itemData.item.degree}
                 address={itemData.item.address}
-                onViewDetail={() => {
-                    props.navigation.navigate('DoctorListScreen');
+                onSelect={() => {
+                    props.navigation.navigate('BookAppointment');
                 }}
             />} 
         />

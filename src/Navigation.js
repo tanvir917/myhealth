@@ -14,6 +14,7 @@ import AuthScreen from '../src/screens/AuthScreen'
 import doctorsList from '../src/screens/doctors/doctorsList'
 import PatientsOverviewScreen from '../src/screens/patients/PatientsOverviewScreen';
 import DoctorListScreen from '../src/screens/doctors/DoctorListScreen';
+import BookAppointment from '../src/screens/doctors/BookAppointment';
 import Colors from './constants/Colors'
 
 
@@ -21,7 +22,8 @@ const ProductsNavigator = createStackNavigator(
   {
     PatientsOverviewScreen: PatientsOverviewScreen,
     DoctorListScreen: DoctorListScreen,
-    doctorsList: doctorsList
+    doctorsList: doctorsList,
+    BookAppointment: BookAppointment
   });
 
 const AuthNavigator = createStackNavigator({

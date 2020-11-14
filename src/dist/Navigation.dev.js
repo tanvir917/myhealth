@@ -35,6 +35,8 @@ var _PatientsOverviewScreen = _interopRequireDefault(require("../src/screens/pat
 
 var _DoctorListScreen = _interopRequireDefault(require("../src/screens/doctors/DoctorListScreen"));
 
+var _BookAppointment = _interopRequireDefault(require("../src/screens/doctors/BookAppointment"));
+
 var _Colors = _interopRequireDefault(require("./constants/Colors"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -42,7 +44,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   PatientsOverviewScreen: _PatientsOverviewScreen["default"],
   DoctorListScreen: _DoctorListScreen["default"],
-  doctorsList: _doctorsList["default"]
+  doctorsList: _doctorsList["default"],
+  BookAppointment: _BookAppointment["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]
