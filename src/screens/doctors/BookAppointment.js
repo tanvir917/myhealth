@@ -8,9 +8,10 @@ import {
     StyleSheet,
     Alert
  } from 'react-native';
- import {Calendar} from 'react-native-calendars';
- import TimeSlot from '../../components/Doctors/TimeSlot'
+import TimeSlot from '../../components/Doctors/TimeSlot'
 import Card from '../../components/UI/Card';
+import ProfileNavigation from '../../ProfileNavigation';
+import CalendarPicker from 'react-native-calendar-picker';
 
 const jsonData = { "slots" : {
     "slot1": "9:00am to 9:30am",
@@ -20,11 +21,21 @@ const jsonData = { "slots" : {
  }
 }
 const BookAppointment = props => {
+    const [selectedDate, setSelectedDate] = useState(null);
+
     const [isPressed, setIsPressed] = useState(false);
-    const handlePressed = () => setIsPressed(!isPressed);
+    const handlePressed = () => {
+        setIsPressed(!isPressed);
+    };
     useEffect(() => {
         console.log('effect: ',isPressed);
     }, [isPressed]);
+
+    const onDateChange = (date) => {
+        //function to handle the date change
+        setSelectedDate(date);
+    };
+    
     const slots = jsonData.slots
     const slotsarr = Object.keys(slots).map( function(k) {
       return (  <View key={k} style={{margin:5}}>
@@ -32,11 +43,11 @@ const BookAppointment = props => {
                     onSelect={() => {
                         handlePressed()
                         console.log('...............button pressed..................')
-                        console.log(isPressed);
+                        console.log(slots[k]);
                     }}
                     color= {isPressed === false ? 'blue' : 'grey'}
                     title={slots[k]}
-                    />
+                  />
                 </View>)
     });
      return (
@@ -44,20 +55,61 @@ const BookAppointment = props => {
             <View>
                 <View style={styles.container}>
                     <Card style={styles.card}>
-                        <Calendar
-                        onDayPress={() => {}}
-                        style={styles.calendar}
-                        hideExtraDays
-                        //markedDates={{[state.selected]: {selected: true}}}
-                        theme={{
-                            selectedDayBackgroundColor: 'green',
-                            todayTextColor: 'green',
-                            arrowColor: 'green',
+                    <CalendarPicker
+                        startFromMonday={true}
+                        minDate={new Date(2018, 1, 1)}
+                        maxDate={new Date(2050, 6, 3)}
+                        weekdays={
+                            [
+                            'Mon', 
+                            'Tue', 
+                            'Wed', 
+                            'Thur', 
+                            'Fri', 
+                            'Sat', 
+                            'Sun'
+                            ]}
+                        months={[
+                            'January',
+                            'Febraury',
+                            'March',
+                            'April',
+                            'May',
+                            'June',
+                            'July',
+                            'August',
+                            'September',
+                            'October',
+                            'November',
+                            'December',
+                        ]}
+                        previousTitle="Previous"
+                        nextTitle="Next"
+                        todayBackgroundColor="#e6ffe6"
+                        selectedDayColor="#66ff33"
+                        selectedDayTextColor="#000000"
+                        scaleFactor={375}
+                        textStyle={{
+                            fontFamily: 'Cochin',
+                            color: '#000000',
                         }}
-                        />
+                        onDateChange={onDateChange}
+                    />
                     </Card>
+                    <View style={styles.textStyle}>
+                        <Text style={styles.textStyle}>
+                            Selected Date :
+                        </Text>
+                        <Text style={styles.textStyle}>
+                            {selectedDate ? selectedDate.toString() : ''}
+                            {console.log(selectedDate)}
+                        </Text>
+                    </View>
                 </View>
                 {slotsarr}
+                <View style={styles.profileContainer}>
+                    <ProfileNavigation />
+                </View>
             </View>
 
          </ScrollView>
@@ -70,6 +122,12 @@ const BookAppointment = props => {
       alignItems: 'center',
       borderRadius: 17
     },
+    profileContainer: {
+        flex: 1,
+        backgroundColor: "#eef",
+        flexDirection: "column",
+        margin: '3%'
+      },
     calendar: {
       borderTopWidth: 1,
       paddingTop: 5,
@@ -81,8 +139,11 @@ const BookAppointment = props => {
         
     },
     card: {
-        width: '90%'
-    }
+        width: '98%'
+    },
+    textStyle: {
+        marginTop: 10,
+    },
   });
 
  export default BookAppointment;
