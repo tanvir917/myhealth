@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native';
 import Card from '../UI/Card';
 
-const MenuItem = props => {
+const DoctorItem = props => {
     
     let TouchableCmp = TouchableOpacity;
 
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     }
 });
-export default MenuItem;
+export default DoctorItem;

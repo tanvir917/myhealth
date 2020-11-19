@@ -3,10 +3,11 @@ import {
     ScrollView,
     View,
     Text,
-    Image,
+    Alert,
     Button,
     StyleSheet,
-    Alert
+    FlatList,
+    TouchableOpacity,
  } from 'react-native';
 import TimeSlot from '../../components/Doctors/TimeSlot'
 import Card from '../../components/UI/Card';
@@ -20,16 +21,35 @@ const jsonData = { "slots" : {
     "slot4": "10:30am to 11:00am",
  }
 }
+const slotData = [
+    {
+      id: "slot1",
+      slot: "9:00am to 9:30am",
+    },
+    {
+      id: "slot2",
+      slot: "9:30am to 10:00am",
+    },
+    {
+      id: "slot3",
+      slot: "10:00am to 10:30am",
+    },
+  ];
+
 const BookAppointment = props => {
     const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedbtn, setSelectedbtn] = useState(null);
 
     const [isPressed, setIsPressed] = useState(false);
     const handlePressed = () => {
         setIsPressed(!isPressed);
     };
-    useEffect(() => {
-        console.log('effect: ',isPressed);
-    }, [isPressed]);
+    const onBtnPress = (id) => {
+        setSelectedbtn(id)
+    }
+    // useEffect(() => {
+    //     console.log('effect: ',isPressed);
+    // }, [isPressed]);
 
     const onDateChange = (date) => {
         //function to handle the date change
@@ -106,12 +126,48 @@ const BookAppointment = props => {
                         </Text>
                     </View>
                 </View>
-                {slotsarr}
+                <View>
+                    <FlatList
+                        extractData={selectedbtn}
+                        data={slotData}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({item}) => (
+                            <TouchableOpacity
+                                onPress={() => {
+                                    onBtnPress(item.id)
+                                    console.log('====================================');
+                                    console.log(item.id);
+                                    console.log('====================================');
+                                }}>
+                                <Card
+                                    style={{}}
+                                    basicStyle = {{
+                                        height: 60,
+                                        alignItems: 'center', 
+                                        justifyContent: 'center',
+                                        margin: 7,
+                                        borderRadius: 5
+                                    }}
+                                    containerStyle={selectedbtn === item.id ? {
+                                        backgroundColor: '#a1a1a1',
+                                    } : {backgroundColor: 'white'}}>
+                                        <Text style={{fontSize: 25}}>{item.slot}</Text>
+                                </Card>
+                            </TouchableOpacity>
+                        )}
+                    />
+                    <Button 
+                        title="Continue"
+                        style={{margin: 10}}
+                        onPress={() => Alert.alert("Button Pressed")}
+                    />
+                </View>
+
+                
                 <View style={styles.profileContainer}>
                     <ProfileNavigation />
                 </View>
             </View>
-
          </ScrollView>
      );
  };

@@ -17,7 +17,7 @@ import DoctorItem from '../../components/Doctors/DoctorItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const DoctorListScreen = props => {
+const FindDoctor = props => {
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
      return (
         <FlatList
@@ -49,7 +49,7 @@ const DoctorListScreen = props => {
     }
   }
 
-  DoctorListScreen.navigationOptions = (navData) => {
+  FindDoctor.navigationOptions = (navData) => {
       return {
           headerTitle: 'Find Your Doctor',
           headerRight:
@@ -61,8 +61,7 @@ const DoctorListScreen = props => {
                 style={[{ color: 'blue', marginRight: 5 }]}
                 size={15}
             /></TouchableHighlight>,
-        headerLeft: () => {},
       };
   }
 
-export default DoctorListScreen; 
+export default FindDoctor; 

@@ -13,7 +13,7 @@ import { navigationHeader } from './theme'
 import AuthScreen from '../src/screens/AuthScreen'
 import doctorsList from '../src/screens/doctors/doctorsList'
 import PatientsOverviewScreen from '../src/screens/patients/PatientsOverviewScreen';
-import DoctorListScreen from '../src/screens/doctors/DoctorListScreen';
+import FindDoctor from './screens/doctors/FindDoctor';
 import BookAppointment from '../src/screens/doctors/BookAppointment';
 import Colors from './constants/Colors'
 
@@ -21,7 +21,7 @@ import Colors from './constants/Colors'
 const ProductsNavigator = createStackNavigator(
   {
     PatientsOverviewScreen: PatientsOverviewScreen,
-    DoctorListScreen: DoctorListScreen,
+    FindDoctor: FindDoctor,
     doctorsList: doctorsList,
     BookAppointment: BookAppointment
   });
@@ -35,7 +35,7 @@ const AuthNavigator = createStackNavigator({
 const MenusNavigator = createDrawerNavigator({
   ProductsNavigator: ProductsNavigator,
   PatientsOverviewScreen: PatientsOverviewScreen,
-  DoctorListScreen: DoctorListScreen  
+  FindDoctor: FindDoctor  
 })
 
 const AppNavigator = createSwitchNavigator({

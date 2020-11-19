@@ -3,7 +3,7 @@ import Menu from '../models/menu';
   const MENUS = [
    new Menu(
      'p1',
-     'doctorsList',
+     'FindDoctor',
      'Find Doctor',
      'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
    ),
@@ -21,31 +21,31 @@ import Menu from '../models/menu';
    ),
    new Menu(
      'p4',
-     'DoctorListScreen',
+     'FindDoctor',
      'My Appointments',
      'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?cs=srgb&dl=blur-blurred-book-pages-46274.jpg&fm=jpg'
    ),
    new Menu(
      'p5',
-     'DoctorListScreen',
+     'FindDoctor',
      'My Care Team',
      'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'
    ),
    new Menu(
      'p6',
-     'DoctorListScreen',
+     'FindDoctor',
      'My Documents',
      'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
    ),
    new Menu(
     'p7',
-    'DoctorListScreen',
+    'FindDoctor',
     'My Prescription',
     'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'
   ),
   new Menu(
     'p8',
-    'DoctorListScreen',
+    'FindDoctor',
     'My Medicine',
     'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
   )
