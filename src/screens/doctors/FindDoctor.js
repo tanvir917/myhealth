@@ -29,9 +29,13 @@ const FindDoctor = props => {
                 name={itemData.item.name}
                 role={itemData.item.role}
                 degree={itemData.item.degree}
-                address={itemData.item.address}
+                address={itemData.item.hospital.title}
                 onSelect={() => {
-                    props.navigation.navigate('BookAppointment');
+                    props.navigation.navigate('FindChamber', {
+                      doctorId: itemData.item.id,
+                      hospitalId: itemData.item.hospital,
+                      doctorName: itemData.item.name
+                    });
                 }}
             />} 
         />

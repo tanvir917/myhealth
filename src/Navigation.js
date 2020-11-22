@@ -16,12 +16,14 @@ import PatientsOverviewScreen from '../src/screens/patients/PatientsOverviewScre
 import FindDoctor from './screens/doctors/FindDoctor';
 import BookAppointment from '../src/screens/doctors/BookAppointment';
 import Colors from './constants/Colors'
+import FindChamber from '../src/screens/doctors/FindChamber';
 
 
 const ProductsNavigator = createStackNavigator(
   {
     PatientsOverviewScreen: PatientsOverviewScreen,
     FindDoctor: FindDoctor,
+    FindChamber: FindChamber,
     doctorsList: doctorsList,
     BookAppointment: BookAppointment
   });

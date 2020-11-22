@@ -39,11 +39,14 @@ var _BookAppointment = _interopRequireDefault(require("../src/screens/doctors/Bo
 
 var _Colors = _interopRequireDefault(require("./constants/Colors"));
 
+var _FindChamber = _interopRequireDefault(require("../src/screens/doctors/FindChamber"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   PatientsOverviewScreen: _PatientsOverviewScreen["default"],
   FindDoctor: _FindDoctor["default"],
+  FindChamber: _FindChamber["default"],
   doctorsList: _doctorsList["default"],
   BookAppointment: _BookAppointment["default"]
 });

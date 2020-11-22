@@ -23,21 +23,26 @@ const jsonData = { "slots" : {
 }
 const slotData = [
     {
-      id: "slot1",
-      slot: "9:00am to 9:30am",
-    },
-    {
-      id: "slot2",
-      slot: "9:30am to 10:00am",
-    },
-    {
-      id: "slot3",
-      slot: "10:00am to 10:30am",
+        id: '1',
+        date: '2020-11-27T06:00:00.000Z',
+        time:
+        [{
+        id: "slot1",
+        slot: "9:00am to 9:30am",
+        },
+        {
+        id: "slot2",
+        slot: "9:30am to 10:00am",
+        },
+        {
+        id: "slot3",
+        slot: "10:00am to 10:30am",
+        }]
     },
   ];
 
 const BookAppointment = props => {
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState('T');
     const [selectedbtn, setSelectedbtn] = useState(null);
 
     const [isPressed, setIsPressed] = useState(false);
@@ -123,13 +128,14 @@ const BookAppointment = props => {
                         <Text style={styles.textStyle}>
                             {selectedDate ? selectedDate.toString() : ''}
                             {console.log(selectedDate)}
+                            {console.log(selectedDate.toString())}
                         </Text>
                     </View>
                 </View>
                 <View>
                     <FlatList
                         extractData={selectedbtn}
-                        data={slotData}
+                        data={slotData.time}
                         keyExtractor={(item) => item.id}
                         renderItem={({item}) => (
                             <TouchableOpacity

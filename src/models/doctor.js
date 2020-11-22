@@ -1,10 +1,10 @@
 class Doctor {
-    constructor(id, name, role, degree, address, imageUrl) {
+    constructor(id, name, role, degree, hospital, imageUrl) {
         this.id = id;
         this.name = name;
         this.role = role;
         this.degree = degree,
-        this.address = address,
+        this.hospital = hospital,
         this.imageUrl = imageUrl;  
     }
 } 
