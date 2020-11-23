@@ -41,6 +41,12 @@ var _Colors = _interopRequireDefault(require("./constants/Colors"));
 
 var _FindChamber = _interopRequireDefault(require("../src/screens/doctors/FindChamber"));
 
+var _CheckAppointment = _interopRequireDefault(require("../src/screens/doctors/CheckAppointment"));
+
+var _ConfirmAppointment = _interopRequireDefault(require("../src/screens/doctors/ConfirmAppointment"));
+
+var _MyAppointment = _interopRequireDefault(require("../src/screens/doctors/MyAppointment"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
@@ -48,7 +54,10 @@ var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   FindDoctor: _FindDoctor["default"],
   FindChamber: _FindChamber["default"],
   doctorsList: _doctorsList["default"],
-  BookAppointment: _BookAppointment["default"]
+  BookAppointment: _BookAppointment["default"],
+  CheckAppointment: _CheckAppointment["default"],
+  ConfirmAppointment: _ConfirmAppointment["default"],
+  MyAppointment: _MyAppointment["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]

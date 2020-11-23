@@ -9,6 +9,7 @@ import webrtc from './webrtc'
 import authM from './authM';
 import menus from './menus'
 import doctorList from './doctorList'
+import appointment from './appointment'
 
 export default combineReducers({
   app,
@@ -19,5 +20,6 @@ export default combineReducers({
   webrtc,
   authM,
   menus,
-  doctorList
+  doctorList,
+  appointment
 })

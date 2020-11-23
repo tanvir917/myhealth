@@ -17,7 +17,9 @@ import FindDoctor from './screens/doctors/FindDoctor';
 import BookAppointment from '../src/screens/doctors/BookAppointment';
 import Colors from './constants/Colors'
 import FindChamber from '../src/screens/doctors/FindChamber';
-
+import CheckAppointment from '../src/screens/doctors/CheckAppointment'
+import ConfirmAppointment from '../src/screens/doctors/ConfirmAppointment'
+import MyAppointment from '../src/screens/doctors/MyAppointment'
 
 const ProductsNavigator = createStackNavigator(
   {
@@ -25,7 +27,10 @@ const ProductsNavigator = createStackNavigator(
     FindDoctor: FindDoctor,
     FindChamber: FindChamber,
     doctorsList: doctorsList,
-    BookAppointment: BookAppointment
+    BookAppointment: BookAppointment,
+    CheckAppointment: CheckAppointment,
+    ConfirmAppointment: ConfirmAppointment,
+    MyAppointment: MyAppointment,
   });
 
 const AuthNavigator = createStackNavigator({

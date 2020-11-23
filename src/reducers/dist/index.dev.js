@@ -25,6 +25,8 @@ var _menus = _interopRequireDefault(require("./menus"));
 
 var _doctorList = _interopRequireDefault(require("./doctorList"));
 
+var _appointment = _interopRequireDefault(require("./appointment"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = (0, _redux.combineReducers)({
@@ -36,7 +38,8 @@ var _default = (0, _redux.combineReducers)({
   webrtc: _webrtc["default"],
   authM: _authM["default"],
   menus: _menus["default"],
-  doctorList: _doctorList["default"]
+  doctorList: _doctorList["default"],
+  appointment: _appointment["default"]
 });
 
 exports["default"] = _default;

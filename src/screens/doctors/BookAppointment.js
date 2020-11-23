@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     ScrollView,
     View,
@@ -9,46 +9,45 @@ import {
     FlatList,
     TouchableOpacity,
  } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import TimeSlot from '../../components/Doctors/TimeSlot'
 import Card from '../../components/UI/Card';
 import ProfileNavigation from '../../ProfileNavigation';
 import CalendarPicker from 'react-native-calendar-picker';
+import * as appointmentActions from '../../actionCreators/appointment';
 
-const jsonData = { "slots" : {
-    "slot1": "9:00am to 9:30am",
-    "slot2": "9:30am to 10:00am",
-    "slot3": "10:00am to 10:30am",
-    "slot4": "10:30am to 11:00am",
- }
-}
+// const jsonData = { "slots" : {
+//     "slot1": "9:00am to 9:30am",
+//     "slot2": "9:30am to 10:00am",
+//     "slot3": "10:00am to 10:30am",
+//     "slot4": "10:30am to 11:00am",
+//  }
+// }
 const slotData = [
     {
-        id: '1',
-        date: '2020-11-27T06:00:00.000Z',
-        time:
-        [{
-        id: "slot1",
-        slot: "9:00am to 9:30am",
-        },
-        {
-        id: "slot2",
-        slot: "9:30am to 10:00am",
-        },
-        {
-        id: "slot3",
-        slot: "10:00am to 10:30am",
-        }]
+    id: "slot1",
+    slot: "9:00am to 9:30am",
     },
+    {
+    id: "slot2",
+    slot: "9:30am to 10:00am",
+    },
+    {
+    id: "slot3",
+    slot: "10:00am to 10:30am",
+    }
   ];
 
 const BookAppointment = props => {
-    const [selectedDate, setSelectedDate] = useState('T');
+    const doctorId = props.navigation.getParam('doctorId');
+    const hospitalId = props.navigation.getParam('hospitalId');
+    const [selectedDate, setSelectedDate] = useState(null);
     const [selectedbtn, setSelectedbtn] = useState(null);
 
-    const [isPressed, setIsPressed] = useState(false);
-    const handlePressed = () => {
-        setIsPressed(!isPressed);
-    };
+    // const [isPressed, setIsPressed] = useState(false);
+    // const handlePressed = () => {
+    //     setIsPressed(!isPressed);
+    // };
     const onBtnPress = (id) => {
         setSelectedbtn(id)
     }
@@ -61,20 +60,21 @@ const BookAppointment = props => {
         setSelectedDate(date);
     };
     
-    const slots = jsonData.slots
-    const slotsarr = Object.keys(slots).map( function(k) {
-      return (  <View key={k} style={{margin:5}}>
-                  <TimeSlot
-                    onSelect={() => {
-                        handlePressed()
-                        console.log('...............button pressed..................')
-                        console.log(slots[k]);
-                    }}
-                    color= {isPressed === false ? 'blue' : 'grey'}
-                    title={slots[k]}
-                  />
-                </View>)
-    });
+    // const slots = jsonData.slots
+    // const slotsarr = Object.keys(slots).map( function(k) {
+    //   return (  <View key={k} style={{margin:5}}>
+    //               <TimeSlot
+    //                 onSelect={() => {
+    //                     handlePressed()
+    //                     console.log('...............button pressed..................')
+    //                     console.log(slots[k]);
+    //                 }}
+    //                 color= {isPressed === false ? 'blue' : 'grey'}
+    //                 title={slots[k]}
+    //               />
+    //             </View>)
+    // });
+    const dispatch = useDispatch();
      return (
          <ScrollView>
             <View>
@@ -128,14 +128,13 @@ const BookAppointment = props => {
                         <Text style={styles.textStyle}>
                             {selectedDate ? selectedDate.toString() : ''}
                             {console.log(selectedDate)}
-                            {console.log(selectedDate.toString())}
                         </Text>
                     </View>
                 </View>
                 <View>
                     <FlatList
                         extractData={selectedbtn}
-                        data={slotData.time}
+                        data={slotData}
                         keyExtractor={(item) => item.id}
                         renderItem={({item}) => (
                             <TouchableOpacity
@@ -165,7 +164,15 @@ const BookAppointment = props => {
                     <Button 
                         title="Continue"
                         style={{margin: 10}}
-                        onPress={() => Alert.alert("Button Pressed")}
+                        onPress={() => {
+                            //dispatch(appointmentActions.addAppointment(selectedDate, selectedbtn, doctorId, hospitalId));
+                            props.navigation.navigate('CheckAppointment', {
+                                doctorId,
+                                hospitalId,
+                                selectedDate,
+                                selectedbtn: slotData.find(prod => prod.id === selectedbtn)
+                            })
+                        }}
                     />
                 </View>
 
