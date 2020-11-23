@@ -8,12 +8,17 @@ var ADD_APPOINTMENT = 'ADD_APPOINTMENT'; //action creator
 
 exports.ADD_APPOINTMENT = ADD_APPOINTMENT;
 
-var addAppointment = function addAppointment(date, slot, doctorId, hospitalId) {
+var addAppointment = function addAppointment(doctorName, doctorRole, appStatus, doctorImage, date, slot, hosAddress, doctorId, hospitalId) {
   return {
     type: ADD_APPOINTMENT,
     appointmentData: {
+      doctorName: doctorName,
+      doctorRole: doctorRole,
+      appStatus: appStatus,
+      doctorImage: doctorImage,
       date: date,
       slot: slot,
+      hosAddress: hosAddress,
       doctorId: doctorId,
       hospitalId: hospitalId
     }

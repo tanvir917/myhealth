@@ -28,7 +28,10 @@ const CheckAppointment = props => {
                 style={{margin: 10}}
                 onPress={() => {
                     dispatch(appointmentActions.addAppointment(
-                        selectedDate, selectedbtn.slot, doctorId, hospitalId
+                        doctorData.name, doctorData.role, 
+                        appStatus = 0, doctorData.imageUrl, 
+                        selectedDate, selectedbtn.slot, 
+                        hospitalData.location, doctorId, hospitalId
                     ));
                     props.navigation.navigate('ConfirmAppointment')
                 }}

@@ -16,8 +16,8 @@ var _DoctorItem = _interopRequireDefault(require("../../components/Doctors/Docto
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var MyAppointment = function MyAppointment(props) {
-  var listOfDoctors = (0, _reactRedux.useSelector)(function (state) {
-    return state.doctorList.availableDoctors;
+  var appointments = (0, _reactRedux.useSelector)(function (state) {
+    return state.appointment.appointments;
   });
 };
 

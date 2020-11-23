@@ -9,9 +9,14 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_APPOINTMENT:
             const newAppointment = new Appointment(
-                new Date().toString(), 
+                new Date().toString(),
+                action.appointmentData.doctorName,
+                action.appointmentData.doctorRole,
+                action.appointmentData.appStatus,
+                action.appointmentData.doctorImage,
                 action.appointmentData.date, 
                 action.appointmentData.slot,
+                action.appointmentData.hosAddress,
                 action.appointmentData.doctorId,
                 action.appointmentData.hospitalId
             );

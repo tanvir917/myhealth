@@ -1,9 +1,18 @@
 export const ADD_APPOINTMENT = 'ADD_APPOINTMENT';
 
 //action creator
-export const addAppointment = (date, slot, doctorId, hospitalId) => {
+export const addAppointment = (
+    doctorName, doctorRole, appStatus, doctorImage,
+    date, slot, hosAddress, doctorId, hospitalId
+) => {
     return {
         type: ADD_APPOINTMENT, 
-        appointmentData: { date: date, slot: slot, doctorId: doctorId, hospitalId: hospitalId }
+        appointmentData: { 
+            doctorName: doctorName, doctorRole: doctorRole, 
+            appStatus: appStatus, doctorImage: doctorImage,
+            date: date, slot: slot, 
+            hosAddress: hosAddress, doctorId: doctorId, 
+            hospitalId: hospitalId 
+        }
     };
 };
