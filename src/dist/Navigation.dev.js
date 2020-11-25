@@ -47,6 +47,8 @@ var _ConfirmAppointment = _interopRequireDefault(require("../src/screens/doctors
 
 var _MyAppointment = _interopRequireDefault(require("../src/screens/doctors/MyAppointment"));
 
+var _AppointmentDetail = _interopRequireDefault(require("../src/screens/doctors/AppointmentDetail"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
@@ -57,12 +59,11 @@ var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   BookAppointment: _BookAppointment["default"],
   CheckAppointment: _CheckAppointment["default"],
   ConfirmAppointment: _ConfirmAppointment["default"],
-  MyAppointment: _MyAppointment["default"]
+  MyAppointment: _MyAppointment["default"],
+  AppointmentDetail: _AppointmentDetail["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]
-}, {
-  defaultNavigationOptions: _theme.navigationHeader
 });
 var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
   ProductsNavigator: ProductsNavigator,
@@ -70,6 +71,7 @@ var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
   FindDoctor: _FindDoctor["default"]
 });
 var AppNavigator = (0, _reactNavigation.createSwitchNavigator)({
+  AuthNavigator: AuthNavigator,
   MenusNavigator: MenusNavigator
 });
 

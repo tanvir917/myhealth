@@ -2,7 +2,9 @@ import { LOGIN, SIGNUP } from '../actionCreators/authM';
 
   const initialState = {
      token: null,
-     userId: null
+     userId: null,
+     displayName: null,
+     email: null,
  }
 
   export default (state = initialState, action) => {
@@ -10,12 +12,16 @@ import { LOGIN, SIGNUP } from '../actionCreators/authM';
          case LOGIN: 
              return {
                  token: action.token,
-                 userId: action.userId
+                 userId: action.userId,
+                 displayName: action.displayName,
+                 email: action.email
              };
          case SIGNUP:
              return {
                  token: action.token,
-                 userId: action.userId
+                 userId: action.userId,
+                 displayname: action.displayname,
+                 email: action.email,
              };
          default:
              return state

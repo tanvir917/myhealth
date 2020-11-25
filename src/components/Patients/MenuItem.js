@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         marginTop: '5%'
     },
     touchable: {
-        borderRadius: 15,
+        borderRadius: 10,
         overflow: 'hidden'
     },
     card: {

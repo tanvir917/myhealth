@@ -1,9 +1,12 @@
 class Appointment {
     constructor(
-        id, doctorName, doctorRole, appStatus, doctorImage,
+        id, patientId, patientName, patientEmail, doctorName, doctorRole, appStatus, doctorImage,
         date, slot, hosAddress, doctorId, hospitalId
     ) {
         this.id = id;
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.patientEmail = patientEmail;
         this.doctorName = doctorName;
         this.doctorRole = doctorRole;
         this.appStatus = appStatus;

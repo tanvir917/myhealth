@@ -13,6 +13,11 @@ const CheckAppointment = props => {
     );
     //date = selectedDate.slice(0, 10);
     hospitalData = doctorData.hospital.find(prod => prod.id = hospitalId);
+    
+    const patientName = useSelector(state => state.authM.displayName);
+    const patientId = useSelector(state => state.authM.userId);
+    const patientEmail = useSelector(state => state.authM.email);
+
     const dispatch = useDispatch();
     return (
         <View>
@@ -28,6 +33,7 @@ const CheckAppointment = props => {
                 style={{margin: 10}}
                 onPress={() => {
                     dispatch(appointmentActions.addAppointment(
+                        patientId, patientName, patientEmail,
                         doctorData.name, doctorData.role, 
                         appStatus = 0, doctorData.imageUrl, 
                         selectedDate, selectedbtn.slot, 

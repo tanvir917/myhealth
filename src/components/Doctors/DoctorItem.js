@@ -21,9 +21,11 @@ const DoctorItem = props => {
                         <View style={styles.details}>
                             <View style={styles.detailsContainer}>
                                 <Text style={styles.title}>{props.name}</Text>
+                                {props.appStatus === 0 ?  
                                 <View style={styles.appointment}>
-                                    <Text style={styles.appointmentText}>Appointment</Text>
-                                </View>
+                                    <Text style={styles.appointmentText}>Approved</Text>
+                                </View> : null
+                                }
                             </View>
                             <Text style={styles.role}>{props.role}</Text>
                             <Text style={styles.desc}>{props.degree}</Text>
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
         margin:4,
         width: '25%',
         height: '90%',
-        borderRadius: 15,
+        borderRadius: 18,
         overflow: 'hidden'
     },
     image: {
@@ -60,7 +62,8 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     title: {
-        fontFamily: 'Bold',
+        fontWeight: 'bold',
+        color: 'black',
         fontSize: 15,
         marginVertical: 2
     },
@@ -94,6 +97,10 @@ const styles = StyleSheet.create({
     },
     detailsContainer: {
         flexDirection: 'row'
+    },
+    role: {
+        fontWeight: 'bold',
+        color: 'grey'
     }
 });
 export default DoctorItem;

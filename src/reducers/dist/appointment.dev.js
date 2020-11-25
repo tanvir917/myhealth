@@ -27,7 +27,7 @@ var _default = function _default() {
 
   switch (action.type) {
     case _appointment.ADD_APPOINTMENT:
-      var newAppointment = new _appointment2["default"](new Date().toString(), action.appointmentData.doctorName, action.appointmentData.doctorRole, action.appointmentData.appStatus, action.appointmentData.doctorImage, action.appointmentData.date, action.appointmentData.slot, action.appointmentData.hosAddress, action.appointmentData.doctorId, action.appointmentData.hospitalId);
+      var newAppointment = new _appointment2["default"](new Date().toString(), action.appointmentData.patientId, action.appointmentData.patientName, action.appointmentData.patientEmail, action.appointmentData.doctorName, action.appointmentData.doctorRole, action.appointmentData.appStatus, action.appointmentData.doctorImage, action.appointmentData.date, action.appointmentData.slot, action.appointmentData.hosAddress, action.appointmentData.doctorId, action.appointmentData.hospitalId);
       return _objectSpread({}, state, {
         //copying old state which is redundant here
         appointments: state.appointments.concat(newAppointment) //creating a brand new arry order

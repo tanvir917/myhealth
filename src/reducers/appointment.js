@@ -10,6 +10,9 @@ export default (state = initialState, action) => {
         case ADD_APPOINTMENT:
             const newAppointment = new Appointment(
                 new Date().toString(),
+                action.appointmentData.patientId,
+                action.appointmentData.patientName,
+                action.appointmentData.patientEmail,
                 action.appointmentData.doctorName,
                 action.appointmentData.doctorRole,
                 action.appointmentData.appStatus,

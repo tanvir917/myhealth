@@ -43,7 +43,7 @@ import * as authActions from '../actionCreators/authM';
     // const [state, dispatch] = useReducer(reducer, initialState);
     const [formState, dispatchFormState ] =  useReducer(formReducer, {
        inputValues: {
-           name: '',
+           displayName: '',
            email: '',
            password: ''
        }, 
@@ -64,7 +64,7 @@ import * as authActions from '../actionCreators/authM';
         let action;	         
         if (isSignup) {		             
             action = authActions.signup(
-            formState.inputValues.name,	                 
+            formState.inputValues.displayName,	                 
             formState.inputValues.email,     
             formState.inputValues.password		             
         );		         
@@ -81,13 +81,14 @@ import * as authActions from '../actionCreators/authM';
              props.navigation.navigate('PatientsOverviewScreen');
          } catch(err) {
              setError(err.message);
+             setIsLoading(false);
          }
-         setIsLoading(false);
+         
     };
 
     const inputChangeHandler = useCallback((inputIdentifier, inputValue, inputValidity) => {
        dispatchFormState({
-           type: FORM_INPUT_UPDATE, 
+           type: FORM_INPUT_UPDATE,
            value: inputValue,
            isValid: inputValidity,
            input: inputIdentifier//'title'
@@ -95,13 +96,13 @@ import * as authActions from '../actionCreators/authM';
    }, [dispatchFormState]);
      return ( 
          <KeyboardAvoidingView 
-             style={styles.screen}
          >
+             <View style={styles.gradient}>
                  <Card style={styles.authContainer}>
                      <ScrollView>
                      {isSignup ? (
                         <Input 
-                            id="name" 
+                            id="displayName" 
                             label="User Name" 
                             keyboardType="default"
                             required
@@ -154,6 +155,7 @@ import * as authActions from '../actionCreators/authM';
                          </View>
                      </ScrollView>
                  </Card>
+                 </View>
          </KeyboardAvoidingView>
      )
  };
@@ -167,12 +169,13 @@ import * as authActions from '../actionCreators/authM';
          flex:1
      },
      gradient: {
-         flex: 1,
+         height: '100%',
+         width: '100%',
          justifyContent: 'center',
          alignItems: 'center'
      },
      authContainer: {
-         width: '100%',
+         width: '80%',
          maxWidth: 500,
          maxHeight: 800,
          padding: 20

@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const FindDoctor = props => {
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
+    console.log(listOfDoctors);
      return (
         <FlatList
             data={listOfDoctors} 

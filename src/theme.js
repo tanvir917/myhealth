@@ -1,3 +1,5 @@
+import React from 'react';
+import { Image, TouchableHighlight } from 'react-native';
 export const colors = {
   black: '#000000',
   darkBackground: '#323232',
@@ -16,8 +18,27 @@ export const colors = {
   white: '#ffffff',
   whiteBackground: '#f4f6f9',
 }
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={require('./icons8-menu-24.png')}
+        style={{ width: 30, height: 30, marginRight: 5 }}
+      />
+    );
+  }
+}
 
 export const navigationHeader = {
+  // headerRight:
+  //           () => 
+  //           <TouchableHighlight 
+  //               onPress={() => navData.navigation.toggleDrawer()}
+  //               activeOpacity='0'>
+  //           <LogoTitle
+  //               style={[{ color: 'blue', marginRight: 12 }]}
+  //               size={15}
+  //           /></TouchableHighlight>,
   headerStyle: {
     backgroundColor: colors.primary,
     elevation: 6,

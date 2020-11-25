@@ -11,9 +11,9 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import MenuItem from '../../components/Patients/MenuItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as firebase from 'firebase'
 
 let TouchableCmp = TouchableOpacity;
-
     if(Platform.OS === 'android' && Platform.Version >= 21) {
         TouchableCmp = TouchableNativeFeedback;
     }
@@ -25,6 +25,8 @@ const PatientsOverviewScreen = props => {
     
     const [error, setError] = useState();
     const products = useSelector(state => state.menus.availableProducts);
+    const userName = useSelector(state => state.authM.userId);
+    console.log(userName);
     //const [arrayholder, setArrayholder] = useState(products);
     const dispatch = useDispatch();
     
@@ -143,10 +145,12 @@ const PatientsOverviewScreen = props => {
 class LogoTitle extends React.Component {
     render() {
       return (
-        <Image
-          source={require('./icons8-menu-24.png')}
-          style={{ width: 30, height: 30, marginRight: 5 }}
-        />
+        <View style={styles.drawer}>
+            <Image
+                source={require('./icons8-menu-24.png')}
+                style={{ width: 30, height: 30, margin: 10, padding: 10 }}
+            />
+        </View>
       );
     }
   }
@@ -172,6 +176,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    drawer: {
+        height: '100%',
+        width: '100%',
+        color: 'grey'
     }
 })
 

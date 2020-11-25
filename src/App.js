@@ -8,6 +8,8 @@ import NavigationService from './NavigationService'
 import { appStart } from './actionCreators'
 import { colors } from './theme'
 import config from './QBConfig'
+import * as firebase from 'firebase';
+import ApiKeys from './constants/ApiKeys'
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +30,15 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     props.appStart(config)
+    if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
   }
+
+  onAuthStateChanged = (user) => {
+    this.setState({isAuthenticationReady: true});
+    this.setState({isAuthenticated: !!user});
+  }
+  
 
   render() {
     return (

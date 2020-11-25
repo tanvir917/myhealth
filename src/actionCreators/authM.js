@@ -1,7 +1,7 @@
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
 
-  export const signup = (name, email, password) => {
+  export const signup = (displayName, email, password) => {
      return async dispatch => {
          try {
              const response = await fetch(
@@ -12,7 +12,7 @@ export const LOGIN = 'LOGIN';
                          'Content-Type': 'application/json'
                      },
                      body: JSON.stringify({
-                         name: name,
+                         displayName: displayName,
                          email: email,
                          password: password,
                          returnSecureToken: true
@@ -34,7 +34,7 @@ export const LOGIN = 'LOGIN';
               const resData = await response.json();
              console.log(resData);
 
-              dispatch({ type: SIGNUP });
+              dispatch({ type: SIGNUP, token: resData.idToken, userId: resData.localId, displayName: resData.displayName, email: resData.email });
          } catch (err) {
              console.log('printing error: ');
              console.log(err);
@@ -78,7 +78,7 @@ export const LOGIN = 'LOGIN';
 
              const resData = await response.json();
             console.log(resData);
-            dispatch({ type: LOGIN });
+            dispatch({ type: LOGIN, token: resData.idToken, userId: resData.localId, displayName: resData.displayName, email: resData.email }); 
         } catch (err) {
             //console.log('printing error: ');
             console.log(err);	             
