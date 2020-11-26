@@ -49,6 +49,8 @@ var _MyAppointment = _interopRequireDefault(require("../src/screens/doctors/MyAp
 
 var _AppointmentDetail = _interopRequireDefault(require("../src/screens/doctors/AppointmentDetail"));
 
+var _DoctorProfile = _interopRequireDefault(require("../src/screens/doctors/DoctorProfile"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
@@ -60,7 +62,8 @@ var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   CheckAppointment: _CheckAppointment["default"],
   ConfirmAppointment: _ConfirmAppointment["default"],
   MyAppointment: _MyAppointment["default"],
-  AppointmentDetail: _AppointmentDetail["default"]
+  AppointmentDetail: _AppointmentDetail["default"],
+  DoctorProfile: _DoctorProfile["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]

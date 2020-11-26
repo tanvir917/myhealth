@@ -10,6 +10,7 @@ import authM from './authM';
 import menus from './menus'
 import doctorList from './doctorList'
 import appointment from './appointment'
+import categoryreducer from './categoryreducer'
 
 export default combineReducers({
   app,
@@ -21,5 +22,6 @@ export default combineReducers({
   authM,
   menus,
   doctorList,
-  appointment
+  appointment,
+  categoryreducer
 })

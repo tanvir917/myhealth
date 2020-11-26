@@ -31,7 +31,7 @@ const FindChamber = props =>  {
             degree={itemData.item.email}
             address={itemData.item.location}
             onSelect={() => {
-                props.navigation.navigate('BookAppointment',{
+                props.navigation.navigate('DoctorProfile',{
                   doctorId,
                   hospitalId: itemData.item.id
                 });

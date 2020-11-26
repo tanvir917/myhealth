@@ -21,6 +21,7 @@ import CheckAppointment from '../src/screens/doctors/CheckAppointment'
 import ConfirmAppointment from '../src/screens/doctors/ConfirmAppointment'
 import MyAppointment from '../src/screens/doctors/MyAppointment'
 import AppointmentDetail from '../src/screens/doctors/AppointmentDetail'
+import DoctorProfile from '../src/screens/doctors/DoctorProfile'
 
 const ProductsNavigator = createStackNavigator(
   {
@@ -33,6 +34,7 @@ const ProductsNavigator = createStackNavigator(
     ConfirmAppointment: ConfirmAppointment,
     MyAppointment: MyAppointment,
     AppointmentDetail: AppointmentDetail,
+    DoctorProfile: DoctorProfile,
   });
 
 const AuthNavigator = createStackNavigator({

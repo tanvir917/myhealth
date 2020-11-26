@@ -16,12 +16,29 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import DoctorItem from '../../components/Doctors/DoctorItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FindCategory from '../../components/Doctors/FindCategory';
 
 const FindDoctor = props => {
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
     console.log(listOfDoctors);
+    const Doctor = useSelector(state => state.categoryreducer.availableCategory);
+    console.log('====================================');
+    console.log(Doctor);
+    console.log('====================================');
      return (
-        <FlatList
+        <View>
+            <FlatList
+              horizontal={true}
+              data={Doctor}
+              numColumns={1}
+              keyExtractor={item=>item.id}
+              renderItem={itemData => <FindCategory
+                        
+                        title={itemData.item.Name}
+              />}
+              onViewDetail={()=>{}}
+          />
+          <FlatList
             data={listOfDoctors} 
             numColumns={1}
             keyExtractor={item => item.id} 
@@ -40,6 +57,7 @@ const FindDoctor = props => {
                 }}
             />} 
         />
+        </View>
     );
   };
 
