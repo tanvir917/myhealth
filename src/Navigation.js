@@ -48,7 +48,7 @@ const MenusNavigator = createDrawerNavigator({
 })
 
 const AppNavigator = createSwitchNavigator({
-  AuthNavigator: AuthNavigator,
+  //AuthNavigator: AuthNavigator,
   MenusNavigator: MenusNavigator
 })
 

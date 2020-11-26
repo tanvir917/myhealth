@@ -12,7 +12,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import TimeSlot from '../../components/Doctors/TimeSlot'
 import Card from '../../components/UI/Card';
-import ProfileNavigation from '../../ProfileNavigation';
 import CalendarPicker from 'react-native-calendar-picker';
 import * as appointmentActions from '../../actionCreators/appointment';
 
@@ -177,9 +176,7 @@ const BookAppointment = props => {
                 </View>
 
                 
-                <View style={styles.profileContainer}>
-                    <ProfileNavigation />
-                </View>
+                
             </View>
          </ScrollView>
      );

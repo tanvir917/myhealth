@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
     FlatList,
      ScrollView,
@@ -14,19 +14,33 @@ import Colors from '../../constants/Colors';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import DoctorItem from '../../components/Doctors/DoctorItem';
-import HeaderButton from '../../components/UI/HeaderButton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FindCategory from '../../components/Doctors/FindCategory';
+import { SearchBar } from 'react-native-elements';
 
 const FindDoctor = props => {
+    const [value, setValue] = useState();
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
     console.log(listOfDoctors);
     const Doctor = useSelector(state => state.categoryreducer.availableCategory);
     console.log('====================================');
-    console.log(Doctor);
+    console.log(listOfDoctors);
     console.log('====================================');
+    const [arrayholder, setArrayholder] = useState(listOfDoctors);
+    const searchDoctor = listOfDoctors;
+
+    const searchFilterFunction = text => {
+      setValue(text);
+      const newData = searchDoctor.filter(item => {
+        const itemData = item.name.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setArrayholder(newData);
+    };
+
      return (
         <View>
+            <Text style={{fontSize: 20, fontWeight: 'bold', margin: 15, color: 'black'}}>Choose a Category</Text>
             <FlatList
               horizontal={true}
               data={Doctor}
@@ -38,8 +52,18 @@ const FindDoctor = props => {
               />}
               onViewDetail={()=>{}}
           />
+          <SearchBar
+                focus
+                placeholder="Search Doctor Name..."
+                lightTheme
+                round
+                onChangeText={text => searchFilterFunction(text)}
+                //onSearchButtonPress={text => searchFilterFunction(text)}
+                autoCorrect={false}
+                value={value}
+            />
           <FlatList
-            data={listOfDoctors} 
+            data={arrayholder.length === 0 ? listOfDoctors : arrayholder} 
             numColumns={1}
             keyExtractor={item => item.id} 
             renderItem={itemData => <DoctorItem 
