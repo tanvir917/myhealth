@@ -11,6 +11,9 @@ import {
   webrtcToggleAudio,
   webrtcToggleVideo,
 } from '../actionCreators'
+ 
+
+
 
 const getUserFromSessionInitiator = (session, currentUser, users = []) => {
   if (!session) return
