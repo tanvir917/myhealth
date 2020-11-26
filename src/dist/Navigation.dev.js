@@ -74,7 +74,7 @@ var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
   FindDoctor: _FindDoctor["default"]
 });
 var AppNavigator = (0, _reactNavigation.createSwitchNavigator)({
-  AuthNavigator: AuthNavigator,
+  //AuthNavigator: AuthNavigator,
   MenusNavigator: MenusNavigator
 });
 

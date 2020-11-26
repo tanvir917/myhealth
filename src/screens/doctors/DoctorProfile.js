@@ -3,65 +3,80 @@ import { ScrollView, View, Text, StyleSheet, Button, Image } from 'react-native'
 import DoctorFile from '../../components/Doctors/DoctorFile'
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../../components/UI/Card';
+import ProfileNavigation from '../../ProfileNavigation';
 
 const DoctorProfile = props =>  {
     const doctorId = props.navigation.getParam('doctorId');
     const hospitalId = props.navigation.getParam('hospitalId');
-    // const doctorData = useSelector(state => 
-    //     state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
-    // );
+    const doctorData = useSelector(state => 
+        state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
+    );
     console.log('====================================');
-    console.log(doctorId);
+    console.log(doctorData);
     console.log('====================================');
     return (
-        <ScrollView>
+        <ScrollView style={styles.fullView}>
 
-        <View style={{ alignItems: 'center', height: '100%', overflow: 'visible' }}>
-            <View style={{ height: '90%', backgroundColor: 'red' }}>
+        <View style={{ alignItems: 'center', overflow: 'visible' }}>
+            <View >
                 <Card style={styles.Cardstyle}>
 
                     <View style={styles.parentView}>
-                        <View style={{ paddingTop: '5%', paddingBottom: '4%' }}><Image style={styles.image}
-                            source={require('../../image/icont.png')} />
+                        <View style={{ margin: '5%' }}>
+                            <Image style={styles.image}
+                                source={{uri: doctorData.imageUrl}} 
+                            />
                         </View>
-                        <View style={{
-                            fontSize: 25, color: "blue", justifyContent: 'center', alignItems: 'center'
+                        <View 
+                            style={{
+                                fontSize: 20, color: "blue", 
+                                justifyContent: 'center', 
+                                alignItems: 'center'
                         }}>
-                            <Text style={{ fontWeight: "bold", fontSize: 25, color: "black" }}>Dr. Ariana Bosking</Text>
-                            <View><Text style={{ color: "blue", fontSize: 18, paddingTop: 2, paddingBottom: 2 }}>Cancer Sergon</Text></View>
+                            <Text 
+                                style={{ fontWeight: "bold", fontSize: 25, color: "black" }}
+                                >{doctorData.name}
+                            </Text>
+                            <View>
+                                <Text 
+                                    style={{ color: "blue", fontSize: 18, paddingTop: 2, paddingBottom: 2 }}
+                                >{doctorData.role}</Text>
+                            </View>
                         </View>
 
-                        <View><Text style={{ paddingBottom: 10, paddingTop: 2 }}>FCPS, MBBS (Surgery) Dhaka Medical</Text></View>
+                        <View>
+                    <Text style={{ paddingBottom: 10, paddingTop: 2 }}>{doctorData.degree}</Text>
+                        </View>
 
                     </View>
-                    <View style={{ alignItems: 'center', flexDirection: 'row', width: '100%', paddingLeft: '2%', paddingRight: '2%', paddingBottom: 20 }}>
-                        <Card style={styles.commoncard1}>
-                            <View><Text>Experience1</Text></View>
-                            <View><Text>Experience2</Text></View>
+                    <View style={{ alignItems: 'center', flexDirection: 'row', width: '100%', margin: '5%' }}>
+                        <Card style={styles.commoncard}>
+                            <View><Text>Experience</Text></View>
+                            <View><Text>25+ Years</Text></View>
                         </Card>
-                        <Card style={styles.commoncard2} >
-                            <View><Text>Experience3</Text></View>
-                            <View><Text>Experience4</Text></View>
+                        <Card style={styles.commoncard} >
+                            <View><Text>Opening</Text></View>
+                            <View><Text>10 am - 08 pm</Text></View>
                         </Card>
-                        <Card style={styles.commoncard3}>
-                            <View><Text>Experience5</Text></View>
-                            <View><Text>Experience6</Text></View>
+                        <Card style={styles.commoncard}>
+                            <View><Text>Fee</Text></View>
+                            <View><Text>500 BDT</Text></View>
                         </Card>
                     </View>
 
 
                 </Card>
             </View>
-            <View style={{ marginTop: '3%', flexDirection: 'row' }}>
-                <View style={styles.commonbutton1}>
+            <View style={{ margin: '3%', flexDirection: 'row' }}>
+                <View style={styles.commonbutton}>
 
                     <Button title='Call Now'></Button>
                 </View>
-                <View style={{ backgroundColor: '#34C85B', borderRadius: 5 }}>
+                <View style={styles.commonbutton}>
 
                     <Button title='Live Chat'></Button>
                 </View>
-                <View style={{ backgroundColor: '#006DF0', borderRadius: 5 }}>
+                <View style={styles.commonbutton}>
 
                     <Button 
                         title='Appointment'
@@ -77,10 +92,9 @@ const DoctorProfile = props =>  {
 
             </View>
         </View>
-
-
-
-
+        <View style={styles.profileContainer}>
+            <ProfileNavigation />
+        </View>
     </ScrollView>
     );
 }
@@ -105,54 +119,31 @@ const styles = StyleSheet.create({
 
     },
     Cardstyle: {
-        height: '100%',
-        width: '85%',
+        width: '95%',
         alignItems: 'center',
         marginTop: '2%'
       
 
     },
-    commoncard1: {
+    commoncard: {
         backgroundColor: '#F4F9FF',
-        height: '100%',
-        padding: '3%'      
-    },
-    commoncard2: {
-        backgroundColor: '#F4F9FF',
-        height: '100%',
+        height: 50,
+        maxHeight: 100,
         padding: '3%', 
         marginLeft: '2.5%',
         
         
-    }, commoncard3: {
-        backgroundColor: '#F4F9FF',
-        height: '100%',
-        padding: '3%',
-        marginLeft: '2.5%',
-     
-
     }
     ,
-    commonbutton1: {
+    commonbutton: {
         backgroundColor: '#F4F9FF',
         height: '100%',
-        padding: '3%',
+        margin: '2%',
         borderRadius: 5
-
     },
-    commonbutton2: {
-        backgroundColor: '#F4F9FF',
+    fullView: {
         height: '100%',
-        padding: '3%',
-         marginLeft: '2.5%',
-        borderRadius: 5
-    }, commonbutton3: {
-        backgroundColor: '#F4F9FF',
-        height: '100%',
-        padding: '3%',
-        marginLeft: '2.5%',
-        borderRadius: 5
-
+        width: '100%'
     }
 
 })

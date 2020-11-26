@@ -12,15 +12,12 @@ const FindCategory=props=>{
     
 return(
     <ScrollView horizontal={true}>
-    <View>
-        <Card>
-       
+    <View style={{marginBottom: 15}}>
+        <Card style={{height: 50, margin: 7, width: 100,}}>
            <TouchableCmp>
                <View>
-                  
                    <View>
-                   <Text>{props.title}</Text>
-
+                        <Text>{props.title}</Text>
                    </View>
                </View>
            </TouchableCmp>
