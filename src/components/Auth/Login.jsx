@@ -37,6 +37,13 @@ export default class Login extends React.Component {
   LOGIN_HINT = 'Use your email or alphanumeric characters in a range from 3 to 50. First character must be a letter.'
   USERNAME_HINT = 'Use alphanumeric characters and spaces in a range from 3 to 20. Cannot contain more than one space in a row.'
 
+  componentDidMount() {
+    this.submit({
+      login: 'testq@test.com',
+      username:'rahat'
+    })
+  }
+  
   static navigationOptions = ({ navigation }) => ({
     title: 'Enter to videochat',
     headerRight: (

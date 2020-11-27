@@ -4,6 +4,8 @@ import {
   Platform,
   Text,
   View,
+  Image,
+  TouchableHighlight,
 } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 
@@ -14,12 +16,28 @@ import UsersList from '../../containers/Users/List'
 import { INFO, EXIT } from '../../images'
 import styles from './styles'
 
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <View style={styles.drawer}>
+          <Image
+              source={require('../../image/icons8-menu-24.png')}
+              style={{ width: 30, height: 30, margin: 10, padding: 10 }}
+          />
+      </View>
+    );
+  }
+}
+
 export default class UsersScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const user = navigation.getParam('user', {})
     const handleLogout = navigation.getParam('handleLogout')
     const username = user.fullName || user.email || user.login || ''
+    console.log('====================================');
+    console.log(navigation);
+    console.log('====================================');
     return {
       headerLeft: (
         <HeaderButton
@@ -32,13 +50,22 @@ export default class UsersScreen extends React.Component {
           <Text style={styles.titleText}>{username}</Text>
         </View>
       ),
-      headerRight: (
-        <HeaderButton
-          imageSource={INFO}
-          onPress={() => navigation.navigate('Info')}
-        />
-      )
-    }
+      // headerRight: (
+      //   <HeaderButton
+      //     imageSource={INFO}
+      //     onPress={() => navigation.navigate('AppNavigatorD')}
+      //   />
+      // ),
+      headerRight:
+            () => 
+            <TouchableHighlight 
+                onPress={() => navigation.navigate('PatientsOverviewScreen')}
+                activeOpacity='0'>
+            <LogoTitle
+                style={[{ color: 'blue', marginRight: 12 }]}
+                size={15}
+            /></TouchableHighlight>,
+      }
   }
 
   componentDidMount() {
@@ -84,3 +111,19 @@ export default class UsersScreen extends React.Component {
     )
   }
 }
+
+// UsersScreen.navigationOptions = navData => {
+//   return {
+//       headerTitle: 'Video',
+//       headerRight:
+//           () => 
+//           <TouchableHighlight 
+//               onPress={() => navData.navigation.toggleDrawer()}
+//               activeOpacity='0'>
+//           <LogoTitle
+//               style={[{ color: 'blue', marginRight: 12 }]}
+//               size={15}
+//           /></TouchableHighlight>,
+//       headerLeft: () => {},
+//   }
+// };
