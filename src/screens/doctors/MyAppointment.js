@@ -3,7 +3,7 @@ import {
     SafeAreaView,
     FlatList,
     StyleSheet,
-    View, Text
+    View, Text, Button
   } from 'react-native';
 
 import { useSelector } from 'react-redux';
@@ -24,6 +24,12 @@ const MyAppointment = props => {
                 <Text 
                     style={{fontSize: 22, fontWeight: 'bold'}}
                 >No Appointments Found</Text>
+                <Button 
+                    title="Video Call"
+                    onPress={() => {
+                      props.navigation.navigate('CheckAuth')
+                    }}
+                />
             </View> 
         : 
           <FlatList

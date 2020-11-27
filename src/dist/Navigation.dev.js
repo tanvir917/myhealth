@@ -15,8 +15,6 @@ var _reactRedux = require("react-redux");
 
 var _CheckAuth = _interopRequireDefault(require("./containers/CheckAuth"));
 
-var _Login = _interopRequireDefault(require("./containers/Auth/Login"));
-
 var _CheckConnection = _interopRequireDefault(require("./containers/CheckConnection"));
 
 var _Users = _interopRequireDefault(require("./containers/Users"));
@@ -51,8 +49,35 @@ var _AppointmentDetail = _interopRequireDefault(require("../src/screens/doctors/
 
 var _DoctorProfile = _interopRequireDefault(require("../src/screens/doctors/DoctorProfile"));
 
+var _Login = _interopRequireDefault(require("./containers/Auth/Login"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var VideoNavigator = (0, _reactNavigation.createSwitchNavigator)({
+  CheckAuth: _CheckAuth["default"],
+  Auth: (0, _reactNavigationStack.createStackNavigator)({
+    Login: _Login["default"],
+    Info: _Info["default"]
+  }, {
+    initialRouteName: 'Login',
+    defaultNavigationOptions: _theme.navigationHeader
+  }),
+  WebRTC: (0, _reactNavigation.createSwitchNavigator)({
+    CheckConnection: _CheckConnection["default"],
+    CallScreen: _CallScreen["default"],
+    Main: (0, _reactNavigationStack.createStackNavigator)({
+      Users: _Users["default"],
+      Info: _Info["default"]
+    }, {
+      initialRouteName: 'Users',
+      defaultNavigationOptions: _theme.navigationHeader
+    })
+  }, {
+    initialRouteName: 'CheckConnection'
+  })
+}, {
+  initialRouteName: 'CheckAuth'
+});
 var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   PatientsOverviewScreen: _PatientsOverviewScreen["default"],
   FindDoctor: _FindDoctor["default"],
@@ -63,7 +88,8 @@ var ProductsNavigator = (0, _reactNavigationStack.createStackNavigator)({
   ConfirmAppointment: _ConfirmAppointment["default"],
   MyAppointment: _MyAppointment["default"],
   AppointmentDetail: _AppointmentDetail["default"],
-  DoctorProfile: _DoctorProfile["default"]
+  DoctorProfile: _DoctorProfile["default"],
+  Login: _Login["default"]
 });
 var AuthNavigator = (0, _reactNavigationStack.createStackNavigator)({
   Auth: _AuthScreen["default"]
@@ -73,11 +99,12 @@ var MenusNavigator = (0, _reactNavigationDrawer.createDrawerNavigator)({
   PatientsOverviewScreen: _PatientsOverviewScreen["default"],
   FindDoctor: _FindDoctor["default"]
 });
-var AppNavigator = (0, _reactNavigation.createSwitchNavigator)({
+var AppNavigatorD = (0, _reactNavigation.createSwitchNavigator)({
   //AuthNavigator: AuthNavigator,
-  MenusNavigator: MenusNavigator
+  MenusNavigator: MenusNavigator,
+  VideoNavigator: VideoNavigator
 });
 
-var _default = (0, _reactNavigation.createAppContainer)(AppNavigator);
+var _default = (0, _reactNavigation.createAppContainer)(AppNavigatorD);
 
 exports["default"] = _default;

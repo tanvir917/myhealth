@@ -4,7 +4,6 @@ import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 
 import { useDispatch } from 'react-redux'
 import CheckAuth from './containers/CheckAuth'
-import Login from './containers/Auth/Login'
 import CheckConnection from './containers/CheckConnection'
 import Users from './containers/Users'
 import CallScreen from './containers/CallScreen'
@@ -22,6 +21,33 @@ import ConfirmAppointment from '../src/screens/doctors/ConfirmAppointment'
 import MyAppointment from '../src/screens/doctors/MyAppointment'
 import AppointmentDetail from '../src/screens/doctors/AppointmentDetail'
 import DoctorProfile from '../src/screens/doctors/DoctorProfile'
+import Login from './containers/Auth/Login'
+
+const VideoNavigator = createSwitchNavigator({
+  CheckAuth,
+  Auth: createStackNavigator({
+    Login,
+    Info,
+  }, {
+    initialRouteName: 'Login',
+    defaultNavigationOptions: navigationHeader,
+  }),
+  WebRTC: createSwitchNavigator({
+    CheckConnection,
+    CallScreen,
+    Main: createStackNavigator({
+      Users,
+      Info,
+    }, {
+      initialRouteName: 'Users',
+      defaultNavigationOptions: navigationHeader,
+    })
+  }, {
+    initialRouteName: 'CheckConnection'
+  })
+}, {
+  initialRouteName: 'CheckAuth'
+})
 
 const ProductsNavigator = createStackNavigator(
   {
@@ -35,6 +61,7 @@ const ProductsNavigator = createStackNavigator(
     MyAppointment: MyAppointment,
     AppointmentDetail: AppointmentDetail,
     DoctorProfile: DoctorProfile,
+    Login: Login,
   });
 
 const AuthNavigator = createStackNavigator({
@@ -47,9 +74,10 @@ const MenusNavigator = createDrawerNavigator({
   FindDoctor: FindDoctor  
 })
 
-const AppNavigator = createSwitchNavigator({
+const AppNavigatorD = createSwitchNavigator({
   //AuthNavigator: AuthNavigator,
-  MenusNavigator: MenusNavigator
+  MenusNavigator: MenusNavigator,
+  VideoNavigator: VideoNavigator,
 })
 
-export default createAppContainer(AppNavigator)
+export default createAppContainer(AppNavigatorD)

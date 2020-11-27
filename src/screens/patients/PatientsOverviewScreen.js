@@ -26,7 +26,7 @@ const PatientsOverviewScreen = props => {
     const [error, setError] = useState();
     const products = useSelector(state => state.menus.availableProducts);
     const userName = useSelector(state => state.authM.userId);
-    console.log(userName);
+    //console.log(userName);
     //const [arrayholder, setArrayholder] = useState(products);
     const dispatch = useDispatch();
     
@@ -156,6 +156,9 @@ class LogoTitle extends React.Component {
   }
 
 PatientsOverviewScreen.navigationOptions = navData => {
+    console.log('====================================');
+    console.log(navData);
+    console.log('====================================');
     return {
         headerTitle: 'My Health',
         headerRight:
