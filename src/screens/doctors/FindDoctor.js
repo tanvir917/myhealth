@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { 
     FlatList,
      ScrollView,
@@ -6,27 +6,45 @@ import {
      Text,
      Image,
      TouchableHighlight,
-     StyleSheet
+     StyleSheet,
+     Platform
   } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
-import Colors from '../../constants/Colors';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import DoctorItem from '../../components/Doctors/DoctorItem';
 import FindCategory from '../../components/Doctors/FindCategory';
 import { SearchBar } from 'react-native-elements';
+import Card from '../../components/UI/Card';
 
 const FindDoctor = props => {
+    if(Platform.OS==='android' && Platform.Version >=21){
+        TouchableCmp=TouchableNativeFeedback;
+    }
+    const [selectedbtn, setSelectedbtn] = useState(null);
     const [value, setValue] = useState();
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
-    console.log(listOfDoctors);
+    //console.log(listOfDoctors);
     const Doctor = useSelector(state => state.categoryreducer.availableCategory);
+    const doctorData =  selectedbtn === null ? listOfDoctors : listOfDoctors.filter( item => {
+      const itemData = item.role.toUpperCase();
+      console.log('itemData',itemData);
+      const buttonText = selectedbtn.toUpperCase();
+      console.log('button',buttonText);
+      return itemData.indexOf(buttonText) > -1;
+    })
+    
+    useEffect(() => {
+
+    }, [selectedbtn, doctorData])
+    console.log('==============dd======================');
+    console.log(doctorData);
     console.log('====================================');
-    console.log(listOfDoctors);
-    console.log('====================================');
-    const [arrayholder, setArrayholder] = useState(listOfDoctors);
+    const [arrayholder, setArrayholder] = useState(doctorData);
     const searchDoctor = listOfDoctors;
+    const onBtnPress = (id) => {
+        setSelectedbtn(id)
+    }
 
     const searchFilterFunction = text => {
       setValue(text);
@@ -38,18 +56,70 @@ const FindDoctor = props => {
       setArrayholder(newData);
     };
 
+    const listView = <FlatList
+        data={arrayholder.length === 0 ? doctorData : arrayholder} 
+        numColumns={1}
+        keyExtractor={item => item.id} 
+        renderItem={itemData => <DoctorItem 
+            image={itemData.item.imageUrl}
+            name={itemData.item.name}
+            role={itemData.item.role}
+            degree={itemData.item.degree}
+            address={itemData.item.hospital.title}
+            onSelect={() => {
+                props.navigation.navigate('FindChamber', {
+                  doctorId: itemData.item.id,
+                  hospitalId: itemData.item.hospital,
+                  doctorName: itemData.item.name
+                });
+            }}
+        />} 
+    />
+
      return (
         <View>
             <Text style={{fontSize: 20, fontWeight: 'bold', margin: 15, color: 'black'}}>Choose a Category</Text>
             <FlatList
+              extractData={selectedbtn}
               horizontal={true}
               data={Doctor}
               numColumns={1}
               keyExtractor={item=>item.id}
-              renderItem={itemData => <FindCategory
-                        
-                        title={itemData.item.Name}
-              />}
+              renderItem={({item}) => 
+                <ScrollView horizontal={true}>
+                  <View style={{marginBottom: 15}}> 
+                      <Card 
+                          style={{height: 50, margin: 7, width: 120,}}
+                          containerStyle={selectedbtn === item.Name ? {
+                                        backgroundColor: '#a1a1a1',
+                                    } : {backgroundColor: 'white'}}
+                      >
+                        <TouchableCmp
+                          onPress={() => {
+                              onBtnPress(item.Name)
+                              // console.log('====================================');
+                              // console.log(item.Name);
+                              // console.log('====================================');
+                          }}
+                        >
+                            <View style={styles.card}>
+                                  <View style={styles.imageContainer} >
+                                    <Image 
+                                        style={styles.image} 
+                                        source={{uri: item.image}} 
+                                    />
+                                  </View>
+                                  <View style={{justifyContent: 'center'}}>
+                                      <View>
+                                              <Text>{item.Name}</Text>
+                                      </View>
+                                  </View>
+                            </View>
+                        </TouchableCmp>
+                    
+                      </Card>
+                </View>
+                </ScrollView>}
               onViewDetail={()=>{}}
           />
           <SearchBar
@@ -62,25 +132,7 @@ const FindDoctor = props => {
                 autoCorrect={false}
                 value={value}
             />
-          <FlatList
-            data={arrayholder.length === 0 ? listOfDoctors : arrayholder} 
-            numColumns={1}
-            keyExtractor={item => item.id} 
-            renderItem={itemData => <DoctorItem 
-                image={itemData.item.imageUrl}
-                name={itemData.item.name}
-                role={itemData.item.role}
-                degree={itemData.item.degree}
-                address={itemData.item.hospital.title}
-                onSelect={() => {
-                    props.navigation.navigate('FindChamber', {
-                      doctorId: itemData.item.id,
-                      hospitalId: itemData.item.hospital,
-                      doctorName: itemData.item.name
-                    });
-                }}
-            />} 
-        />
+          {listView}
         </View>
     );
   };
@@ -110,5 +162,22 @@ const FindDoctor = props => {
             /></TouchableHighlight>,
       };
   }
+
+  const styles = StyleSheet.create({
+    imageContainer: {
+        margin:4,
+        width: '25%',
+        height: '80%',
+        borderRadius: 18,
+        overflow: 'hidden'
+    },
+    image: {
+        width: '100%',
+        height: '100%'
+    },
+    card: {
+        flexDirection: 'row'
+    },
+})
 
 export default FindDoctor; 

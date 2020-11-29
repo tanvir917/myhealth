@@ -24,12 +24,7 @@ const MyAppointment = props => {
                 <Text 
                     style={{fontSize: 22, fontWeight: 'bold'}}
                 >No Appointments Found</Text>
-                <Button 
-                    title="Video Call"
-                    onPress={() => {
-                      props.navigation.navigate('CheckAuth')
-                    }}
-                />
+  
             </View> 
         : 
           <FlatList

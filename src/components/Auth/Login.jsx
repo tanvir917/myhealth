@@ -39,8 +39,8 @@ export default class Login extends React.Component {
 
   componentDidMount() {
     this.submit({
-      login: 'testq@test.com',
-      username:'rahat'
+      login: 'tanvir',
+      username:'tanvir'
     })
   }
   

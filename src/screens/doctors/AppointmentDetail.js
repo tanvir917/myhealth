@@ -19,6 +19,12 @@ const AppointmentDetail = props => {
             <Text>{hospitalId}</Text>
             <Text>{appDate.toString().slice(0, 15)}</Text>
             <Text>{appTime}</Text>
+            <Button 
+                    title="Video Call"
+                    onPress={() => {
+                      props.navigation.navigate('CheckAuth')
+                    }}
+            />
         </View>
     );
 };

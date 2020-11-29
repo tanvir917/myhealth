@@ -12,13 +12,28 @@ const FindCategory=props=>{
     
 return(
     <ScrollView horizontal={true}>
-    <View style={{marginBottom: 15}}>
-        <Card style={{height: 50, margin: 7, width: 100,}}>
-           <TouchableCmp>
-               <View>
-                   <View>
-                        <Text>{props.title}</Text>
-                   </View>
+    <View style={{marginBottom: 15}}> 
+        <Card style={{height: 50, margin: 7, width: 120,}}>
+           <TouchableCmp
+            onPress={() => {
+                onBtnPress(item.id)
+                console.log('====================================');
+                console.log(item.id);
+                console.log('====================================');
+            }}
+           >
+               <View style={styles.card}>
+                    <View style={styles.imageContainer} >
+                            <Image 
+                                style={styles.image} 
+                                source={{uri: props.image}} 
+                            />
+                    </View>
+                    <View style={{justifyContent: 'center'}}>
+                        <View>
+                                <Text>{props.title}</Text>
+                        </View>
+                    </View>
                </View>
            </TouchableCmp>
        
@@ -28,5 +43,22 @@ return(
 )
 
 }
+
+const styles = StyleSheet.create({
+    imageContainer: {
+        margin:4,
+        width: '25%',
+        height: '80%',
+        borderRadius: 18,
+        overflow: 'hidden'
+    },
+    image: {
+        width: '100%',
+        height: '100%'
+    },
+    card: {
+        flexDirection: 'row'
+    },
+})
 
 export default FindCategory;

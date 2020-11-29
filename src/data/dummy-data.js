@@ -48,6 +48,12 @@ import Menu from '../models/menu';
     'doctorsList',
     'My Medicine',
     'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
+  ),
+  new Menu(
+    'p9',
+    'doctorsList',
+    'My Bill',
+    'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
   )
  ];
 

@@ -70,7 +70,7 @@ import Doctor from '../models/doctor';
    new Doctor(
        'd4',
     'Dr. Zim Basking',
-    'Cancer Surgeon',
+    'Cardiologist',
     'MBBS in Cardiology, Dhaka Medical',
     [{id: 'h1', title: "Medinova Hospital", 
         phone: '01843911111',
@@ -92,7 +92,7 @@ import Doctor from '../models/doctor';
    new Doctor(
        'd5',
     'Dr. Iqbal Basking',
-    'Cancer Surgeon',
+    'CCardiologist',
     'MBBS in Cardiology, Dhaka Medical',
     [{id: 'h1', title: "Medinova Hospital", 
         phone: '01843911111',
@@ -114,7 +114,7 @@ import Doctor from '../models/doctor';
    new Doctor(
        'd6',
     'Dr. Himaloy Basking',
-    'Cancer Surgeon',
+    'Eye Specialist',
     'MBBS in Cardiology, Dhaka Medical',
     [{id: 'h1', title: "Medinova Hospital", 
         phone: '01843911111',

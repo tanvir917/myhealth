@@ -51,7 +51,7 @@ var DOCTORS = [new _doctor["default"]('d1', 'Dr. Ariana Basking', 'Cancer Surgeo
   email: 'loremipsum@gmail.com',
   location: 'Puran Dhaka, Dhaka-1212',
   image: 'https://picsum.photos/id/237/200/300'
-}], 'https://images.pexels.com/photos/160834/coffee-cup-and-saucer-black-coffee-loose-coffee-beans-160834.jpeg?cs=srgb&dl=bean-beans-black-coffee-160834.jpg&fm=jpg'), new _doctor["default"]('d4', 'Dr. Zim Basking', 'Cancer Surgeon', 'MBBS in Cardiology, Dhaka Medical', [{
+}], 'https://images.pexels.com/photos/160834/coffee-cup-and-saucer-black-coffee-loose-coffee-beans-160834.jpeg?cs=srgb&dl=bean-beans-black-coffee-160834.jpg&fm=jpg'), new _doctor["default"]('d4', 'Dr. Zim Basking', 'Cardiologist', 'MBBS in Cardiology, Dhaka Medical', [{
   id: 'h1',
   title: "Medinova Hospital",
   phone: '01843911111',
@@ -65,7 +65,7 @@ var DOCTORS = [new _doctor["default"]('d1', 'Dr. Ariana Basking', 'Cancer Surgeo
   email: 'loremipsum@gmail.com',
   location: 'Puran Dhaka, Dhaka-1212',
   image: 'https://picsum.photos/id/237/200/300'
-}], 'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?cs=srgb&dl=blur-blurred-book-pages-46274.jpg&fm=jpg'), new _doctor["default"]('d5', 'Dr. Iqbal Basking', 'Cancer Surgeon', 'MBBS in Cardiology, Dhaka Medical', [{
+}], 'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?cs=srgb&dl=blur-blurred-book-pages-46274.jpg&fm=jpg'), new _doctor["default"]('d5', 'Dr. Iqbal Basking', 'CCardiologist', 'MBBS in Cardiology, Dhaka Medical', [{
   id: 'h1',
   title: "Medinova Hospital",
   phone: '01843911111',
@@ -79,7 +79,7 @@ var DOCTORS = [new _doctor["default"]('d1', 'Dr. Ariana Basking', 'Cancer Surgeo
   email: 'loremipsum@gmail.com',
   location: 'Puran Dhaka, Dhaka-1212',
   image: 'https://picsum.photos/id/237/200/300'
-}], 'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'), new _doctor["default"]('d6', 'Dr. Himaloy Basking', 'Cancer Surgeon', 'MBBS in Cardiology, Dhaka Medical', [{
+}], 'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'), new _doctor["default"]('d6', 'Dr. Himaloy Basking', 'Eye Specialist', 'MBBS in Cardiology, Dhaka Medical', [{
   id: 'h1',
   title: "Medinova Hospital",
   phone: '01843911111',
