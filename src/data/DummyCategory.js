@@ -1,30 +1,36 @@
 import CategoryDoctors from '../models/categoryModel';
 const CategoryDoctor = [
     new CategoryDoctors(
-        'd1',
-        'Eye Specialist'
+        'c1',
+        'Eye Specialist',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
     ),
     new CategoryDoctors(
-        'd2',
-        'Cardiologist'
+        'c2',
+        'Cardiologist',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
          ),
     new CategoryDoctors
     (
-        'd3',
-        'Cancer Sergon'
+        'c3',
+        'Cancer Surgeon',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
           ),
     new CategoryDoctors(
-        'd4',
-        'Eye Specialist'
+        'c4',
+        'Eye Specialist',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
     ),
     new CategoryDoctors(
-        'd5',
-        'Cardiologist'
+        'c5',
+        'Cardiologist',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
     ),
     new CategoryDoctors
         (
-            'd6',
-            'Cancer Sergon'
+            'c6',
+            'Cancer Surgeon',
+            'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
         )
  
 ];

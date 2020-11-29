@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, Button } from 'react-native';
+import { View, Text, FlatList, Button, StyleSheet, ScrollView, Image } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import * as appointmentActions from '../../actionCreators/appointment';
+import Card from '../../components/UI/Card'
+import ButtonCom from '../../components/UI/ButtonCom'
 
 const CheckAppointment = props => {
     const doctorId = props.navigation.getParam('doctorId');
@@ -20,30 +22,114 @@ const CheckAppointment = props => {
 
     const dispatch = useDispatch();
     return (
-        <View>
-            <Text>{doctorData.name}</Text>
-            <Text>{doctorData.role}</Text>
-            <Text>{doctorData.degree}</Text>
-            <Text>{hospitalData.title}</Text>
-            <Text>{hospitalData.location}</Text>
-            <Text>{selectedDate.toString()}</Text>
-            <Text>{selectedbtn.slot}</Text>
-            <Button 
-                title='Confirm'
-                style={{margin: 10}}
-                onPress={() => {
-                    dispatch(appointmentActions.addAppointment(
-                        patientId, patientName, patientEmail,
-                        doctorData.name, doctorData.role, 
-                        appStatus = 0, doctorData.imageUrl, 
-                        selectedDate, selectedbtn.slot, 
-                        hospitalData.location, doctorId, hospitalId
-                    ));
-                    props.navigation.navigate('ConfirmAppointment')
-                }}
-            />
+        <ScrollView style={styles.fullView}>
+        <View style={{ overflow: 'visible', height: '70%', width: '90%', margin: '7%'}}>
+                <Card style={styles.Cardstyle}>
+                    <View style={styles.parentView}>
+                        <View style={{ margin: '5%' }}>
+                            <Image style={styles.image}
+                                source={{uri: doctorData.imageUrl}} 
+                            />
+                        </View>
+                        <View 
+                            style={{
+                                fontSize: 20, color: "blue", 
+                                justifyContent: 'center', 
+                                alignItems: 'center'
+                        }}>
+                            <Text 
+                                style={{ fontWeight: "bold", fontSize: 25, color: "black" }}
+                                >{doctorData.name}
+                            </Text>
+                            <View style={{ justifyContent: 'center', alignItems: 'center'}}>
+                                <Text 
+                                    style={{ color: "blue", fontSize: 18, justifyContent: 'center' }}
+                                >{doctorData.role}</Text>
+                                <Text>{doctorData.degree}</Text>
+                                <Text>{hospitalData.title}</Text>
+                                <Text>{hospitalData.location}</Text>
+                                <Text>{selectedDate.toString()}</Text>
+                                <Text>{selectedbtn.slot}</Text>
+                            </View>
+                        </View>
+                    </View>
+                </Card>
+                <View style={{marginTop: 20, flexDirection: 'row', justifyContent: 'center'}}>
+                    <ButtonCom 
+                    title='Confirm'
+                    style={{margin: 20, borderRadius: 15,}}
+                    containerStyle={{ backgroundColor: 'blue'}}
+                    textStyle={{ color: 'white'}}
+                    buttonSize={{height: 44, width: '30%'}}
+                    onSelect={() => {
+                        dispatch(appointmentActions.addAppointment(
+                            patientId, patientName, patientEmail,
+                            doctorData.name, doctorData.role, 
+                            appStatus = 0, doctorData.imageUrl, 
+                            selectedDate, selectedbtn.slot, 
+                            hospitalData.location, doctorId, hospitalId
+                        ));
+                        props.navigation.navigate('ConfirmAppointment')
+                    }}
+                    />
+                    <ButtonCom
+                        title = 'Cancel'
+                        buttonSize={{height: 44, width: '30%'}}
+                        onSelect={() => {}}
+                    />
+                </View>
         </View>
+    </ScrollView>
     );
 };
+
+const styles = StyleSheet.create({
+    parentView: {
+        paddingTop: '8%',
+        flex: 1,
+        justifyContent: 'center',
+        height: '50%',
+        alignItems: 'center',
+
+    },
+
+    image: {
+        width: 150,
+        height: 150,
+        borderRadius: 20,
+        overflow: "hidden",
+        borderWidth: 3,
+        paddingTop: '1%',
+
+    },
+    Cardstyle: {
+        width: '95%',
+        alignItems: 'center',
+        marginTop: '2%'
+      
+
+    },
+    commoncard: {
+        backgroundColor: '#F4F9FF',
+        height: 50,
+        maxHeight: 100,
+        padding: '3%', 
+        marginLeft: '2.5%',
+        
+        
+    }
+    ,
+    commonbutton: {
+        backgroundColor: '#F4F9FF',
+        height: '100%',
+        margin: '2%',
+        borderRadius: 5
+    },
+    fullView: {
+        height: '100%',
+        width: '100%',
+    }
+
+})
 
 export default CheckAppointment;
