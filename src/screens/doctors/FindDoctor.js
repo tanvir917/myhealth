@@ -86,10 +86,9 @@ const FindDoctor = props => {
               numColumns={1}
               keyExtractor={item=>item.id}
               renderItem={({item}) => 
-                <ScrollView horizontal={true}>
                   <View style={{marginBottom: 15}}> 
                       <Card 
-                          style={{height: 50, margin: 7, width: 120,}}
+                          style={{height: 55, margin: 7, width: 130,}}
                           containerStyle={selectedbtn === item.Name ? {
                                         backgroundColor: '#a1a1a1',
                                     } : {backgroundColor: 'white'}}
@@ -116,10 +115,8 @@ const FindDoctor = props => {
                                   </View>
                             </View>
                         </TouchableCmp>
-                    
                       </Card>
-                </View>
-                </ScrollView>}
+                </View>}
               onViewDetail={()=>{}}
           />
           <SearchBar
@@ -130,9 +127,15 @@ const FindDoctor = props => {
                 onChangeText={text => searchFilterFunction(text)}
                 //onSearchButtonPress={text => searchFilterFunction(text)}
                 autoCorrect={false}
+                searchIcon={{ size: 24 }}
                 value={value}
-            />
-          {listView}
+                //icon = {{type: 'material-community', color: '#86939e', name: 'share' }}
+                //clearIcon = {{type: 'material-community', color: '#86939e', name: 'share' }}
+           />
+           <View style={{height: '73%'}}>
+              {listView}
+           </View>
+            
         </View>
     );
   };

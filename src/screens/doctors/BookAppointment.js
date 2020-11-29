@@ -14,6 +14,7 @@ import TimeSlot from '../../components/Doctors/TimeSlot'
 import Card from '../../components/UI/Card';
 import CalendarPicker from 'react-native-calendar-picker';
 import * as appointmentActions from '../../actionCreators/appointment';
+import ButtonCom from '../../components/UI/ButtonCom'
 
 // const jsonData = { "slots" : {
 //     "slot1": "9:00am to 9:30am",
@@ -131,6 +132,7 @@ const BookAppointment = props => {
                     </View>
                 </View>
                 <View>
+                    <Text style={styles.slotText}>Available Slots: </Text>
                     <FlatList
                         extractData={selectedbtn}
                         data={slotData}
@@ -160,10 +162,13 @@ const BookAppointment = props => {
                             </TouchableOpacity>
                         )}
                     />
-                    <Button 
+                </View>
+                <ButtonCom
                         title="Continue"
-                        style={{margin: 10}}
-                        onPress={() => {
+                        buttonSize={{height: 44, width: '90%'}}
+                        containerStyle={{backgroundColor: 'blue'}}
+                        textStyle={{color: 'white'}}
+                        onSelect={() => {
                             //dispatch(appointmentActions.addAppointment(selectedDate, selectedbtn, doctorId, hospitalId));
                             props.navigation.navigate('CheckAppointment', {
                                 doctorId,
@@ -173,10 +178,6 @@ const BookAppointment = props => {
                             })
                         }}
                     />
-                </View>
-
-                
-                
             </View>
          </ScrollView>
      );
@@ -210,6 +211,12 @@ const BookAppointment = props => {
     textStyle: {
         marginTop: 10,
     },
+    slotText: {
+        marginLeft: 10,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'black'
+    }
   });
 
  export default BookAppointment;
