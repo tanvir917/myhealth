@@ -42,10 +42,6 @@ const CheckAppointment = props => {
                                     style={{ color: "blue", fontSize: 18, justifyContent: 'center' }}
                                 >{doctorData.role}</Text>
                                 <Text>{doctorData.degree}</Text>
-                                {/* <Text>{hospitalData.title}</Text>
-                                <Text>{hospitalData.location}</Text>
-                                <Text>{selectedDate.toString()}</Text>
-                                <Text>{selectedbtn.slot}</Text> */}
                             </View>
                         </View>
                         <View style={styles.patientInfo}>
@@ -57,6 +53,7 @@ const CheckAppointment = props => {
                                 patientContact='+01714112961'
                                 doctorFee='500 BDT'
                                 patientAddress='Modhubag, Mogbazar, Dhaka'
+                                info='Patient Information'
                             />
                         </View>
                     </View>

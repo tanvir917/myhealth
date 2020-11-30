@@ -15,7 +15,7 @@ const PatientInfo = props =>  {
             locations={[0.3, 0.5, 0.8]}
         >
             <View style={styles.headerContainer}>
-                <Text style={styles.headerText}>Patient Information</Text>
+                <Text style={styles.headerText}>{props.info}</Text>
             </View>
             <View style={styles.parentView}>
                 <View style={styles.imageContainer}>
