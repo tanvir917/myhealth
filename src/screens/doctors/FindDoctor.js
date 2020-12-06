@@ -37,8 +37,11 @@ const FindDoctor = props => {
     useEffect(() => {
 
     }, [selectedbtn, doctorData])
-    console.log('==============dd======================');
+    console.log('==============doctordata======================');
     console.log(doctorData);
+    console.log('====================================');
+    console.log('==============doctorcategory======================');
+    console.log(Doctor);
     console.log('====================================');
     const [arrayholder, setArrayholder] = useState(doctorData);
     const searchDoctor = listOfDoctors;

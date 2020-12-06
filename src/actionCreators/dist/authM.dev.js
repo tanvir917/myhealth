@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.login = exports.signup = exports.LOGIN = exports.SIGNUP = void 0;
+exports.login = exports.logout = exports.signup = exports.LOGOUT = exports.LOGIN = exports.SIGNUP = void 0;
 var SIGNUP = 'SIGNUP';
 exports.SIGNUP = SIGNUP;
 var LOGIN = 'LOGIN';
 exports.LOGIN = LOGIN;
+var LOGOUT = 'LOGOUT';
+exports.LOGOUT = LOGOUT;
 
 var signup = function signup(displayName, email, password) {
   return function _callee(dispatch) {
@@ -88,6 +90,14 @@ var signup = function signup(displayName, email, password) {
 };
 
 exports.signup = signup;
+
+var logout = function logout() {
+  return {
+    type: LOGOUT
+  };
+};
+
+exports.logout = logout;
 
 var login = function login(email, password) {
   return function _callee2(dispatch) {

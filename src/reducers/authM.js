@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP } from '../actionCreators/authM';
+import { LOGIN, SIGNUP, LOGOUT } from '../actionCreators/authM';
 
   const initialState = {
      token: null,
@@ -23,6 +23,8 @@ import { LOGIN, SIGNUP } from '../actionCreators/authM';
                  displayname: action.displayname,
                  email: action.email,
              };
+         case LOGOUT:
+             return initialState;
          default:
              return state
      }

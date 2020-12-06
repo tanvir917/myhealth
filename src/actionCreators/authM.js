@@ -1,5 +1,6 @@
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
   export const signup = (displayName, email, password) => {
      return async dispatch => {
@@ -43,6 +44,13 @@ export const LOGIN = 'LOGIN';
          }
      }
  } 
+
+ export const logout = () => {
+    return {
+        type: LOGOUT
+    }
+} 
+
 
  export const login = (email, password) => {
     return async dispatch => {

@@ -10,8 +10,11 @@ import MenuItem from '../../components/Patients/MenuItem';
 
 const PatientsOverviewScreen = props => {
     const products = useSelector(state => state.menus.availableProducts);
-    const userName = useSelector(state => state.authM.userId);
-    //console.log(userName);
+    const userEmail = useSelector(state => state.authM.email);
+    const userName = useSelector(state => state.authM.displayName);
+    console.log('.........userEmail.........');
+    console.log(userEmail);
+    console.log(userName);
     return (
         <FlatList
             data={products} 
@@ -42,9 +45,9 @@ class LogoTitle extends React.Component {
   }
 
 PatientsOverviewScreen.navigationOptions = navData => {
-    console.log('====================================');
-    console.log(navData);
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log(navData);
+    // console.log('====================================');
     return {
         headerTitle: 'My Health',
         headerRight:

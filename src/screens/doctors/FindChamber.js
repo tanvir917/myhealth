@@ -18,7 +18,7 @@ const FindChamber = props =>  {
     state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
   );
   list = listOfDoctors.hospital;
-  console.log('====================================');
+  console.log('================Chamber list====================');
   console.log(listOfDoctors.hospital);
   console.log('====================================');
   const [arrayholder, setArrayholder] = useState(list);

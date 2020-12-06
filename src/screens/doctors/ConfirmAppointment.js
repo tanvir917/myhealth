@@ -26,6 +26,7 @@ const ConfirmAppointment = props => {
                     patientContact='+01714112961'
                     doctorFee='500 BDT'
                     patientAddress='Modhubag, Mogbazar, Dhaka'
+                    info='Patient Information'
                 />
             </View>
             <ButtonCom

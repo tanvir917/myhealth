@@ -35,6 +35,9 @@ var _default = function _default() {
         email: action.email
       };
 
+    case _authM.LOGOUT:
+      return initialState;
+
     default:
       return state;
   }
