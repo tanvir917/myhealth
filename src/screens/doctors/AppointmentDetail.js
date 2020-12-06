@@ -33,7 +33,10 @@ const AppointmentDetail = props => {
                     buttonSize={{height: 44, width: '90%'}}
                     textStyle={{color: 'white'}}
                     onSelect={() => {
-                    props.navigation.navigate('CheckAuth')
+                    props.navigation.navigate('CheckAuth', {
+                        patientEmail: patientId,
+                        patientName: patientName 
+                    })
                     }}
                 />
             </View>

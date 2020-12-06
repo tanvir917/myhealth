@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native'
 import { Form, Field } from 'react-final-form'
+import { useSelector } from 'react-redux';
 
 import FormTextInput from '../FormTextInput'
 import HeaderButton from '../HeaderButton'
@@ -16,7 +17,9 @@ import { showError } from '../../NotificationService'
 import styles from './styles'
 import { colors } from '../../theme'
 import images from '../../images'
-
+//import retriveData from '../../data/userdata';
+var userName ;
+var userEmail;
 const Header = ({ children, style }) => (
   <Text style={[styles.header, style]}>
     {children}
@@ -28,19 +31,33 @@ const Label = ({ children, style }) => (
     {children}
   </Text>
 )
+// const userEmail = useSelector(state => state.authM.email);
+// const userName = useSelector(state => state.authM.displayName);
+// console.log('.........user from login.........');
+//     console.log(userEmail);
+//     console.log(userName);
 
 // w3c email regex https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
+const retriveData = () => {
+  userEmail = useSelector(state => state.authM.email);
+  userName = useSelector(state => state.authM.displayName);
+  // console.log('.........user from login.........');
+  // console.log(userEmail);
+  // console.log(userName);
+}
 
 export default class Login extends React.Component {
 
   LOGIN_HINT = 'Use your email or alphanumeric characters in a range from 3 to 50. First character must be a letter.'
   USERNAME_HINT = 'Use alphanumeric characters and spaces in a range from 3 to 20. Cannot contain more than one space in a row.'
 
+  
   componentDidMount() {
     this.submit({
-      login: 'tanvir',
-      username:'tanvir'
+      login: userEmail,
+      username: userName
     })
   }
   
@@ -143,70 +160,76 @@ export default class Login extends React.Component {
       [styles.submitBtn, styles.submitBtnDisabled] :
       styles.submitBtn
     return (
-      <KeyboardAvoidingView
-        behavior={Platform.select({ ios: 'padding' })}
-        style={styles.topView}
-      >
-        <ScrollView
-          contentContainerStyle={{ alignItems: 'center' }}
-          style={styles.scrollView}
-        >
-          <View style={{ width: '50%' }}>
-            <Header>Please enter your login and username</Header>
-          </View>
-          <View style={styles.formControlView}>
-            <Label>Login</Label>
-            <Field
-              activeStyle={styles.textInputActive}
-              autoCapitalize="none"
-              blurOnSubmit={false}
-              component={FormTextInput}
-              editable={!loading}
-              name="login"
-              onSubmitEditing={() => this.usernameRef.focus()}
-              returnKeyType="next"
-              style={styles.textInput}
-              textContentType="username"
-              underlineColorAndroid={colors.transparent}
-            />
-          </View>
-          <View style={styles.formControlView}>
-            <Label>Username</Label>
-            <Field
-              activeStyle={styles.textInputActive}
-              autoCapitalize="none"
-              component={FormTextInput}
-              editable={!loading}
-              inputRef={_ref => this.usernameRef = _ref}
-              name="username"
-              onSubmitEditing={handleSubmit}
-              returnKeyType="done"
-              style={styles.textInput}
-              underlineColorAndroid={colors.transparent}
-            />
-          </View>
-          {submitError ? (
-            <Label style={{ alignSelf: 'center', color: colors.error }}>
-              {submitError}
-            </Label>
-          ) : null}
-          <TouchableOpacity
-            disabled={submitDisabled}
-            onPress={handleSubmit}
-            style={submitStyles}
-          >
-            {loading ? (
-              <ActivityIndicator color={colors.white} size={20} />
-            ) : (
-              <Text style={styles.submitBtnText}>Login</Text>
-            )}
-          </TouchableOpacity>
-        </ScrollView>
-      </KeyboardAvoidingView>
+      // <KeyboardAvoidingView
+      //   behavior={Platform.select({ ios: 'padding' })}
+      //   style={styles.topView}
+      // >
+      //   <ScrollView
+      //     contentContainerStyle={{ alignItems: 'center' }}
+      //     style={styles.scrollView}
+      //   >
+      //     <View style={{ width: '50%' }}>
+      //       <Header>Please enter your login and username</Header>
+      //     </View>
+      //     <View style={styles.formControlView}>
+      //       <Label>Login</Label>
+      //       <Field
+      //         activeStyle={styles.textInputActive}
+      //         autoCapitalize="none"
+      //         blurOnSubmit={false}
+      //         component={FormTextInput}
+      //         editable={!loading}
+      //         name="login"
+      //         onSubmitEditing={() => this.usernameRef.focus()}
+      //         returnKeyType="next"
+      //         style={styles.textInput}
+      //         textContentType="username"
+      //         underlineColorAndroid={colors.transparent}
+      //       />
+      //     </View>
+      //     <View style={styles.formControlView}>
+      //       <Label>Username</Label>
+      //       <Field
+      //         activeStyle={styles.textInputActive}
+      //         autoCapitalize="none"
+      //         component={FormTextInput}
+      //         editable={!loading}
+      //         inputRef={_ref => this.usernameRef = _ref}
+      //         name="username"
+      //         onSubmitEditing={handleSubmit}
+      //         returnKeyType="done"
+      //         style={styles.textInput}
+      //         underlineColorAndroid={colors.transparent}
+      //       />
+      //     </View>
+      //     {submitError ? (
+      //       <Label style={{ alignSelf: 'center', color: colors.error }}>
+      //         {submitError}
+      //       </Label>
+      //     ) : null}
+      //     <TouchableOpacity
+      //       disabled={submitDisabled}
+      //       onPress={handleSubmit}
+      //       style={submitStyles}
+      //     >
+      //       {loading ? (
+      //         <ActivityIndicator color={colors.white} size={20} />
+      //       ) : (
+      //         <Text style={styles.submitBtnText}>Login</Text>
+      //       )}
+      //     </TouchableOpacity>
+      //   </ScrollView>
+      // </KeyboardAvoidingView>
+      null
     )
   }
 
   render() {
+    retriveData();
+    console.log('..............========.........................==============...............');
+    
+    console.log(userName);
+    console.log(userEmail);
     return (
       <Form
         onSubmit={this.submit}

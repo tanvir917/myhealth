@@ -14,9 +14,14 @@ const MyAppointment = props => {
     const appointments = useSelector(
         state => state.appointment.appointments
     );
-    console.log('====================================');
+    console.log('==============myappointments======================');
     console.log(appointments);
     console.log('====================================');
+    const userEmail = useSelector(state => state.authM.email);
+    const userName = useSelector(state => state.authM.displayName);
+    console.log('.........user from login.........');
+    console.log(userEmail);
+    console.log(userName);
     return (   
         <SafeAreaView>
             {appointments.length === 0 ? 
@@ -40,8 +45,8 @@ const MyAppointment = props => {
                 appStatus={itemData.item.appStatus}
                 onSelect={() => {
                     props.navigation.navigate('AppointmentDetail', {
-                      patientId: itemData.item.patientId,
-                      patientName: itemData.item.patientName,
+                      patientId: userEmail,
+                      patientName: userName,
                       doctorId: itemData.item.doctorId,
                       doctorName: itemData.item.doctorName,
                       doctorImage: itemData.item.doctorImage,
