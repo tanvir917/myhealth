@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     details: {
-        textAlign: 'center'
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     title: {
         fontFamily: 'open-sans-bold',

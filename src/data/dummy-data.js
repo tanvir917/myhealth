@@ -5,55 +5,55 @@ import Menu from '../models/menu';
      'p1',
      'FindDoctor',
      'Find Doctor',
-     'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+     'https://i.ibb.co/2SV08bG/017-doctor.png'
    ),
    new Menu(
      'p2',
      'FindDoctor',
      'Find Chamber',
-     'https://images.pexels.com/photos/6292/blue-pattern-texture-macro.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+     'https://i.ibb.co/9Vk17fP/033-hospital.png'
    ),
    new Menu(
      'p3',
      'FindDoctor',
      'Find Hospital',
-     'https://images.pexels.com/photos/160834/coffee-cup-and-saucer-black-coffee-loose-coffee-beans-160834.jpeg?cs=srgb&dl=bean-beans-black-coffee-160834.jpg&fm=jpg'
+     'https://i.ibb.co/XFbsxGh/035-insurance.png'
    ),
    new Menu(
      'p4',
      'MyAppointment',
      'My Appointments',
-     'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?cs=srgb&dl=blur-blurred-book-pages-46274.jpg&fm=jpg'
+     'https://i.ibb.co/jhLKhmW/021-expenses.png'
    ),
    new Menu(
      'p5',
      'FindDoctor',
      'My Care Team',
-     'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'
+     'https://i.ibb.co/FHXfcgr/030-heart.png'
    ),
    new Menu(
      'p6',
      'FindDoctor',
      'My Documents',
-     'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
+     'https://i.ibb.co/LhXzVT4/025-folder.png'
    ),
    new Menu(
     'p7',
     'doctorsList',
     'My Prescription',
-    'https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg'
+    'https://i.ibb.co/j57Xwxm/039-rx.png'
   ),
   new Menu(
     'p8',
     'doctorsList',
     'My Medicine',
-    'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
+    'https://i.ibb.co/VJxPGqv/019-drugs.png'
   ),
   new Menu(
     'p9',
     'doctorsList',
     'My Bill',
-    'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg'
+    'https://i.ibb.co/vqHBp3H/027-health-report.png'
   )
  ];
 
