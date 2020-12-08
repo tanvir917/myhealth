@@ -46,7 +46,7 @@ const CheckAppointment = props => {
                         </View>
                         <View style={styles.patientInfo}>
                             <PatientInfo    
-                                patientImage={doctorData.imageUrl}
+                                patientImage='https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
                                 patientName='Tanvir Islam'
                                 appointmentDate={selectedDate.toString().slice(0, 15)}
                                 appointmentTime={selectedbtn.slot}

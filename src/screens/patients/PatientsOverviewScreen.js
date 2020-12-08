@@ -1,12 +1,18 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, 
     Text, Image, FlatList, Button, Platform, ActivityIndicator, 
-    StyleSheet, TouchableHighlight, TouchableOpacity, 
+    StyleSheet, TouchableHighlight, Dimensions, 
     TouchableNativeFeedback } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
+import Carousel from 'react-native-banner-carousel';
+import { LogBox } from 'react-native';
 
+const BannerWidth = Dimensions.get('window').width - 5;
+const BannerHeight = 260;
 import MenuItem from '../../components/Patients/MenuItem';
+import { SearchBar } from 'react-native-elements';
+import Card from '../../components/UI/Card';
 
 const PatientsOverviewScreen = props => {
     const products = useSelector(state => state.menus.availableProducts);
@@ -15,19 +21,65 @@ const PatientsOverviewScreen = props => {
     console.log('.........userEmail.........');
     console.log(userEmail);
     console.log(userName);
-    return (
-        <FlatList
-            data={products} 
-            numColumns={3}
-            keyExtractor={item => item.id} 
-            renderItem={({item}) => <MenuItem 
-                image={item.imageUrl}
-                title={item.title}
-                onSelect={() => {
-                    props.navigation.navigate(item.screen);
-                }}
-            />} 
-        />
+    useEffect(() => {
+        LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    }, [])
+    const images = [
+        'https://i.ibb.co/sQqLtqz/banner-01.jpg',
+        'https://i.ibb.co/tcMMHWz/About-us-3.jpg',
+        'https://i.ibb.co/YQCyXXZ/Banner-Doctors.png'
+    ];
+    renderPage = (image, index) => {
+        return (
+            <View key={index} style={{ justifyContent: 'center', alignItems: 'center'}}>
+                <Image style={{ width: BannerWidth, height: '100%', margin: 10, borderRadius: 10 }} source={{ uri: image }} />
+            </View>
+        );
+    }
+    
+    return ( 
+        <View style={{height:'100%', width:'100%', marginTop: 10}}>
+            <View style={{height: 100, width:'100%',padding: 5, borderRadius:5}}>
+                <View style={styles.container}>
+                    <Carousel
+                        autoplay
+                        autoplayTimeout={5000}
+                        loop
+                        index={0}
+                        useNativeDriver='false'
+                        pageSize={BannerWidth}
+                    >
+                        {images.map((image, index) => renderPage(image, index))}
+                    </Carousel>
+                </View>
+            </View>
+            <SearchBar
+                focus
+                placeholder="Ask your question..."
+                lightTheme
+                round
+                searchIcon={{ size: 25 }}
+                onChangeText={() => {}}
+                //onSearchButtonPress={text => searchFilterFunction(text)}
+                autoCorrect={false}
+                searchIcon={{ size: 24 }}
+                //value={value}
+                //icon = {{type: 'material-community', color: '#86939e', name: 'share' }}
+                //clearIcon = {{type: 'material-community', color: '#86939e', name: 'share' }}
+           />
+            <FlatList
+                data={products} 
+                numColumns={3}
+                keyExtractor={item => item.id} 
+                renderItem={({item}) => <MenuItem 
+                    image={item.imageUrl}
+                    title={item.title}
+                    onSelect={() => {
+                        props.navigation.navigate(item.screen);
+                    }}
+                />} 
+            />
+        </View>
     );
 };
 
@@ -56,7 +108,7 @@ PatientsOverviewScreen.navigationOptions = navData => {
                 onPress={() => navData.navigation.toggleDrawer()}
                 activeOpacity='0'>
             <LogoTitle
-                style={[{ color: 'blue', marginRight: 12 }]}
+                style={[{ color: 'blue', marginRight: 15 }]}
                 size={15}
             /></TouchableHighlight>,
         headerLeft: () => {},
@@ -73,7 +125,13 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         color: 'grey'
-    }
+    },
+    container: {
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
 })
 
 export default PatientsOverviewScreen;

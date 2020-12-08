@@ -11,31 +11,33 @@ const DoctorItem = props => {
     }
 
     return (
-        <Card style={styles.doctorlist} >
-            <View style={styles.touchable}>
-                <TouchableCmp onPress={props.onSelect} useForeground>
-                    <View style={styles.card}>
-                        <View style={styles.imageContainer} >
-                            <Image style={styles.image} source={{uri: props.image}} />
-                        </View>
-                        <View style={styles.details}>
-                            <View style={styles.detailsContainer}>
-                                <Text style={styles.title}>{props.name}</Text>
-                                {props.appStatus === 0 ?  
-                                <View style={styles.appointment}>
-                                    <Text style={styles.appointmentText}>Approved</Text>
-                                </View> : null
-                                }
+        <View style={{justifyContent:'center',alignItems:'center'}}>
+            <Card style={styles.doctorlist} >
+                <View style={styles.touchable}>
+                    <TouchableCmp onPress={props.onSelect} useForeground>
+                        <View style={styles.card}>
+                            <View style={styles.imageContainer} >
+                                <Image style={styles.image} source={{uri: props.image}} />
                             </View>
-                            <Text style={styles.role}>{props.role}</Text>
-                            <Text style={styles.desc}>{props.degree}</Text>
-                            <Text style={styles.desc}>{props.address}</Text>
+                            <View style={styles.details}>
+                                <View style={styles.detailsContainer}>
+                                    <Text style={styles.title}>{props.name}</Text>
+                                    {props.appStatus === 0 ?  
+                                    <View style={styles.appointment}>
+                                        <Text style={styles.appointmentText}>Approved</Text>
+                                    </View> : null
+                                    }
+                                </View>
+                                <Text style={styles.role}>{props.role}</Text>
+                                <Text style={styles.desc}>{props.degree}</Text>
+                                <Text style={styles.desc}>{props.address}</Text>
+                            </View>
+                            
                         </View>
-                        
-                    </View>
-                </TouchableCmp>
-            </View>
-        </Card>
+                    </TouchableCmp>
+                </View>
+            </Card>
+        </View>
         
     )
 };
@@ -43,11 +45,13 @@ const DoctorItem = props => {
 const styles = StyleSheet.create({
     doctorlist: {
         height: 100,
-        width: '95%',
+        width: '92%',
         margin: '2%'
     },
     touchable: {
         borderRadius: 10,
+        height: '100%',
+        width: '100%',
         overflow: 'hidden'
     },
     imageContainer: {
@@ -79,7 +83,8 @@ const styles = StyleSheet.create({
         margin: 8
     },
     card: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: '100%'
     },
     desc: {
         fontSize: 13

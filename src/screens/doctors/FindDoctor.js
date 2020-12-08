@@ -163,7 +163,7 @@ const FindDoctor = props => {
                 onPress={() => navData.navigation.toggleDrawer()}
                 activeOpacity={.2} >
             <LogoTitle
-                style={[{ color: 'blue', marginRight: 5 }]}
+                style={[{ color: 'blue', marginRight: 15 }]}
                 size={15}
             /></TouchableHighlight>,
       };

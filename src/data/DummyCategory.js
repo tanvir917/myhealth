@@ -3,34 +3,34 @@ const CategoryDoctor = [
     new CategoryDoctors(
         'c1',
         'Eye Specialist',
-        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+        'https://i.ibb.co/zPGjSfb/022-eye.png'
     ),
     new CategoryDoctors(
         'c2',
         'Cardiologist',
-        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+        'https://i.ibb.co/zJTwmFh/006-blood-donation.png'
          ),
     new CategoryDoctors
     (
         'c3',
         'Cancer Surgeon',
-        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+        'https://i.ibb.co/Yh4dkJF/002-bacteria.png'
           ),
     new CategoryDoctors(
         'c4',
         'Eye Specialist',
-        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+        'https://i.ibb.co/zPGjSfb/022-eye.png'
     ),
     new CategoryDoctors(
         'c5',
         'Cardiologist',
-        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+        'https://i.ibb.co/VJxPGqv/019-drugs.png'
     ),
     new CategoryDoctors
         (
             'c6',
             'Cancer Surgeon',
-            'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
+            'https://i.ibb.co/WKZcXjd/046-syringe.png'
         )
  
 ];
