@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { View, 
-    Text, Image, FlatList, Button, Platform, ActivityIndicator, 
+    Text, Image, FlatList, 
     StyleSheet, TouchableHighlight, Dimensions, 
-    TouchableNativeFeedback } from 'react-native';
+    TouchableNativeFeedback, 
+    TouchableOpacity} from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-native-banner-carousel';
@@ -12,15 +13,13 @@ const BannerWidth = Dimensions.get('window').width - 5;
 const BannerHeight = 260;
 import MenuItem from '../../components/Patients/MenuItem';
 import { SearchBar } from 'react-native-elements';
-import Card from '../../components/UI/Card';
+import { UserOutlined, StarOutlined } from '@ant-design/icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const PatientsOverviewScreen = props => {
     const products = useSelector(state => state.menus.availableProducts);
     const userEmail = useSelector(state => state.authM.email);
     const userName = useSelector(state => state.authM.displayName);
-    console.log('.........userEmail.........');
-    console.log(userEmail);
-    console.log(userName);
     useEffect(() => {
         LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
     }, [])
@@ -67,6 +66,7 @@ const PatientsOverviewScreen = props => {
                 //icon = {{type: 'material-community', color: '#86939e', name: 'share' }}
                 //clearIcon = {{type: 'material-community', color: '#86939e', name: 'share' }}
            />
+            <View style={{height: '60%'}}>
             <FlatList
                 data={products} 
                 numColumns={3}
@@ -79,6 +79,19 @@ const PatientsOverviewScreen = props => {
                     }}
                 />} 
             />
+            </View>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <TouchableOpacity 
+                onPress={() => {
+                    props.navigation.navigate('FirstScreen')
+                }}>
+                    <View style={{height: 50, width: 380, backgroundColor: 'green', borderRadius: 12, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}>
+                        Queries
+                    </Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -97,9 +110,6 @@ class LogoTitle extends React.Component {
   }
 
 PatientsOverviewScreen.navigationOptions = navData => {
-    // console.log('====================================');
-    // console.log(navData);
-    // console.log('====================================');
     return {
         headerTitle: 'My Health',
         headerRight:
@@ -111,7 +121,30 @@ PatientsOverviewScreen.navigationOptions = navData => {
                 style={[{ color: 'blue', marginRight: 15 }]}
                 size={15}
             /></TouchableHighlight>,
-        headerLeft: () => {},
+        headerLeft: () => 
+        <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#f5f5f5', marginLeft: 10 }}>
+            <TouchableHighlight
+            activeOpacity={1}
+            underlayColor="gray"
+            style={{ borderRadius: 25 }}
+            onPress={() => {
+                // if (auth.currentUser && userId) {
+                // navigation.navigate('Profile');
+                // } else {
+                navData.navigation.navigate('doctorsList');
+                console.log('hello');
+                //}
+            }}
+            >
+            <View
+                style={{
+                    borderRadius: 50
+                }}
+            >
+                <Icon name="user" size={30} />
+            </View>
+            </TouchableHighlight>
+        </View>,
     }
 };
 

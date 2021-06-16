@@ -10,6 +10,20 @@ import { colors } from './theme'
 import config from './QBConfig'
 import * as firebase from 'firebase';
 import ApiKeys from './constants/ApiKeys'
+import AppLoading from 'expo-app-loading';
+import {
+  useFonts,
+  Poppins_100Thin,
+  Poppins_200ExtraLight,
+  Poppins_300Light,
+  Poppins_300Light_Italic,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+  Poppins_900Black,
+} from '@expo-google-fonts/poppins';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,8 +44,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     props.appStart(config)
-    if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
-    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+    // if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
+    // firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
   }
 
   onAuthStateChanged = (user) => {
@@ -39,16 +53,34 @@ class App extends React.Component {
     this.setState({isAuthenticated: !!user});
   }
   
-
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.navigatorView}>
-          <Navigator ref={NavigationService.init} />
+    // let [fontsLoaded] = useFonts({
+    //   Poppins_100Thin,
+    //   Poppins_200ExtraLight,
+    //   Poppins_300Light,
+    //   Poppins_300Light_Italic,
+    //   Poppins_400Regular,
+    //   Poppins_500Medium,
+    //   Poppins_600SemiBold,
+    //   Poppins_700Bold,
+    //   Poppins_800ExtraBold,
+    //   Poppins_900Black,
+    // });
+
+    // if (!fontsLoaded) {
+    //   return (
+    //     <AppLoading />
+    //   );
+    // } else {
+      return (
+        <View style={styles.container}>
+          <View style={styles.navigatorView}>
+            <Navigator ref={NavigationService.init} />
+          </View>
+          <FlashMessage position="bottom" />
         </View>
-        <FlashMessage position="bottom" />
-      </View>
-    )
+      )
+    //}
   }
 
 }

@@ -1,23 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import { 
     FlatList,
-     ScrollView,
+    TouchableOpacity,
      View,
      Text,
      Image,
      TouchableHighlight,
      StyleSheet,
-     Platform
+     Platform,
+     TouchableNativeFeedback
   } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import DoctorItem from '../../components/Doctors/DoctorItem';
 import FindCategory from '../../components/Doctors/FindCategory';
 import { SearchBar } from 'react-native-elements';
 import Card from '../../components/UI/Card';
 
 const FindDoctor = props => {
+    let TouchableCmp = TouchableOpacity;
+
     if(Platform.OS==='android' && Platform.Version >=21){
         TouchableCmp=TouchableNativeFeedback;
     }

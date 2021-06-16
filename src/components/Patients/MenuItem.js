@@ -44,16 +44,19 @@ const styles = StyleSheet.create({
     },
     card: {
         height: '100%',
-        width: '100%'
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     imageContainer: {
-        width: '90%',
-        height: '70%',
+        width: '80%',
+        height: '60%',
         margin: '4%',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         overflow: 'hidden',
-        alignContent: 'center'
+        alignContent: 'center',
+        
     },
     image: {
         width: '100%',
@@ -61,11 +64,9 @@ const styles = StyleSheet.create({
     },
     details: {
         textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignContent: 'center'
     },
     title: {
-        fontFamily: 'open-sans-bold',
         fontSize: 12,
         margin: 2,
         fontWeight: "bold",

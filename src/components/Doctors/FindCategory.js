@@ -1,10 +1,12 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Button, Image, Platform } from 'react-native';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
-import Icon from 'react-native-ionicons';
+import { ScrollView, View, 
+    Text, StyleSheet, Button, 
+    Image, Platform, TouchableNativeFeedback,
+    TouchableOpacity } from 'react-native';
 import Card from '../UI/Card';
 
 const FindCategory=props=>{
+    let TouchableCmp = TouchableOpacity;
 
     if(Platform.OS==='android' && Platform.Version >=21){
         TouchableCmp=TouchableNativeFeedback;

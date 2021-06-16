@@ -84,7 +84,7 @@ export const LOGOUT = 'LOGOUT';
                 throw new Error(message);
             }
 
-             const resData = await response.json();
+            const resData = await response.json();
             console.log(resData);
             dispatch({ type: LOGIN, token: resData.idToken, userId: resData.localId, displayName: resData.displayName, email: resData.email }); 
         } catch (err) {

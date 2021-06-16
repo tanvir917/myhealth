@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { 
     ScrollView,
     View,
@@ -9,9 +9,9 @@ import {
 
 const doctorsList = props => {
      return (
-         <ScrollView>
-             <Text>Hello from doctors list</Text>
-         </ScrollView>
+        <View>
+            <Text>Hello</Text>
+      </View>
      );
- };
+ }
  export default doctorsList;

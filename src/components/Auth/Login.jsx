@@ -40,13 +40,13 @@ const Label = ({ children, style }) => (
 // w3c email regex https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
-const retriveData = () => {
-  userEmail = useSelector(state => state.authM.email);
-  userName = useSelector(state => state.authM.displayName);
-  // console.log('.........user from login.........');
-  // console.log(userEmail);
-  // console.log(userName);
-}
+// const retriveData = () => {
+//   userEmail = useSelector(state => state.authM.email);
+//   userName = useSelector(state => state.authM.displayName);
+//   // console.log('.........user from login.........');
+//   // console.log(userEmail);
+//   // console.log(userName);
+// }
 
 export default class Login extends React.Component {
 
@@ -56,8 +56,8 @@ export default class Login extends React.Component {
   
   componentDidMount() {
     this.submit({
-      login: userEmail,
-      username: userName
+      login: 'himaloyayon@gmail.com',
+      username: 'Himaloy'
     })
   }
   
@@ -225,7 +225,7 @@ export default class Login extends React.Component {
   }
 
   render() {
-    retriveData();
+    //retriveData();
     console.log('..............========.........................==============...............');
     
     console.log(userName);

@@ -10,6 +10,7 @@ import CallScreen from './containers/CallScreen'
 import Info from './containers/Info'
 import { navigationHeader } from './theme'
 import AuthScreen from '../src/screens/AuthScreen'
+//import SignInScreen from '../src/screens/SignIn/SignInScreen'
 import doctorsList from '../src/screens/doctors/doctorsList'
 import PatientsOverviewScreen from '../src/screens/patients/PatientsOverviewScreen';
 import FindDoctor from './screens/doctors/FindDoctor';
@@ -22,6 +23,7 @@ import MyAppointment from '../src/screens/doctors/MyAppointment'
 import AppointmentDetail from '../src/screens/doctors/AppointmentDetail'
 import DoctorProfile from '../src/screens/doctors/DoctorProfile'
 import Login from './containers/Auth/Login'
+import FirstScreen from './screens/queries/FirstScreen';
 
 const VideoNavigator = createSwitchNavigator({
   CheckAuth,
@@ -62,6 +64,7 @@ const ProductsNavigator = createStackNavigator(
     AppointmentDetail: AppointmentDetail,
     DoctorProfile: DoctorProfile,
     Login: Login,
+    FirstScreen: FirstScreen,
   });
 
 const AuthNavigator = createStackNavigator({
@@ -75,7 +78,7 @@ const MenusNavigator = createDrawerNavigator({
 })
 
 const AppNavigatorD = createSwitchNavigator({
-  AuthNavigator: AuthNavigator,
+  //AuthNavigator: AuthNavigator,
   MenusNavigator: MenusNavigator,
   VideoNavigator: VideoNavigator,
 })

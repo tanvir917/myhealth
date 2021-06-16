@@ -11,6 +11,7 @@ import menus from './menus'
 import doctorList from './doctorList'
 import appointment from './appointment'
 import categoryreducer from './categoryreducer'
+import queries from './queries'
 
 export default combineReducers({
   app,
@@ -23,5 +24,6 @@ export default combineReducers({
   menus,
   doctorList,
   appointment,
-  categoryreducer
+  categoryreducer,
+  queries
 })

@@ -1,0 +1,16 @@
+export default {
+    h1: 20,
+    h2: 18,
+    h3: 16,
+    t0: 15,
+    d1: 13,
+    t1: 14,
+    t2: 12,
+    p1: '5%',
+    p2: '3%',
+    p3: '2%',
+    bold: 'Poppins_600SemiBold',
+    regular: 'Poppins_400Regular',
+    medium: 'Poppins_500Medium',
+    p4: '4%',
+}
