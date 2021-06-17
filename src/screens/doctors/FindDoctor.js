@@ -16,6 +16,9 @@ import DoctorItem from '../../components/Doctors/DoctorItem';
 import FindCategory from '../../components/Doctors/FindCategory';
 import { SearchBar } from 'react-native-elements';
 import Card from '../../components/UI/Card';
+import { database } from '../../firebase';
+import * as doctorActions from '../../actionCreators/doctorList';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const FindDoctor = props => {
     let TouchableCmp = TouchableOpacity;
@@ -23,6 +26,7 @@ const FindDoctor = props => {
     if(Platform.OS==='android' && Platform.Version >=21){
         TouchableCmp=TouchableNativeFeedback;
     }
+    const dispatch = useDispatch();
     const [selectedbtn, setSelectedbtn] = useState(null);
     const [value, setValue] = useState();
     const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
@@ -37,8 +41,11 @@ const FindDoctor = props => {
     })
     
     useEffect(() => {
-
+      
     }, [selectedbtn, doctorData])
+    useEffect(() => {
+      dispatch(doctorActions.fetchDoctors())
+    }, [])
     console.log('==============doctordata======================');
     console.log(doctorData);
     console.log('====================================');
@@ -70,7 +77,9 @@ const FindDoctor = props => {
             name={itemData.item.name}
             role={itemData.item.role}
             degree={itemData.item.degree}
-            address={itemData.item.hospital.title}
+            address={itemData.item.hospital[0].title}
+            iconName='graduation-cap'
+            iconType={Icon}
             onSelect={() => {
                 props.navigation.navigate('FindChamber', {
                   doctorId: itemData.item.id,

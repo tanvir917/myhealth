@@ -10,6 +10,7 @@ import {
 import { useSelector } from 'react-redux';
 import DoctorItem from '../../components/Doctors/DoctorItem';
 import { SearchBar } from 'react-native-elements';
+import ENT from 'react-native-vector-icons/Entypo';
 
 const FindChamber = props =>  {
   const [value, setValue] = useState();
@@ -57,6 +58,8 @@ const FindChamber = props =>  {
               role={itemData.item.phone}
               degree={itemData.item.email}
               address={itemData.item.location}
+              iconName='email'
+              iconType='Chamber'
               onSelect={() => {
                   props.navigation.navigate('DoctorProfile',{
                     doctorId,

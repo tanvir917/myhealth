@@ -11,8 +11,10 @@ const DoctorProfile = props =>  {
     const doctorData = useSelector(state => 
         state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
     );
+    const hospitalData = doctorData.hospital.find(h => h.id === hospitalId)
     console.log('====================================');
     console.log(doctorData);
+    console.log(hospitalData);
     console.log('====================================');
     return (
         <ScrollView style={styles.fullView}>
@@ -83,7 +85,8 @@ const DoctorProfile = props =>  {
                         onPress={() => {
                             props.navigation.navigate('BookAppointment', {
                                 doctorId,
-                                hospitalId
+                                hospitalId,
+                                slots: hospitalData.slots
                             })
                         }}
                     ></Button>

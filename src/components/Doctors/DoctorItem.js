@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native';
 import Card from '../UI/Card';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import ENT from 'react-native-vector-icons/Entypo';
 
 const DoctorItem = props => {
     
@@ -28,11 +30,53 @@ const DoctorItem = props => {
                                     </View> : null
                                     }
                                 </View>
-                                <Text style={styles.role}>{props.role}</Text>
-                                <Text style={styles.desc}>{props.degree}</Text>
-                                <Text style={styles.desc}>{props.address}</Text>
+                                {props.iconType === 'Chamber' ? 
+                                (
+                                    <View style={{marginTop: 3, marginBottom: 6, flexDirection: 'row'}}>
+                                        <View style={{marginRight: 10}}>
+                                            <ENT name='phone' size={15}/>
+                                        </View>
+                                        <Text style={styles.role}>{props.role}</Text>
+                                    </View>
+                                ) : 
+                                (
+                                    <View style={{marginTop: 3, marginBottom: 6}}>
+                                        <Text style={styles.role}>{props.role}</Text>
+                                    </View>
+                                )
+                                }
+                                <View
+                                    style={{
+                                        flexDirection: 'row',
+                                        marginBottom: 3,
+                                    }}
+                                >
+                                    {props.iconType === 'Chamber' ?
+                                    (
+                                        <View style={{marginRight: 10}}>
+                                            <ENT name={props.iconName} size={15} />
+                                        </View>
+                                        
+                                    ) :
+                                    (
+                                        <View style={{marginRight: 5}}>
+                                            <Icon name={props.iconName} size={15} />
+                                        </View>
+                                    )
+                                    }
+                                    <Text style={styles.desc}>{props.degree}</Text>
+                                </View>
+                                <View
+                                    style={{
+                                        flexDirection: 'row'
+                                    }}
+                                >
+                                    <View style={{marginRight: 9}}>
+                                        <ENT name="location-pin" size={15} />
+                                    </View>
+                                    <Text style={styles.desc}>{props.address}</Text>
+                                </View>
                             </View>
-                            
                         </View>
                     </TouchableCmp>
                 </View>

@@ -16,34 +16,23 @@ import CalendarPicker from 'react-native-calendar-picker';
 import * as appointmentActions from '../../actionCreators/appointment';
 import ButtonCom from '../../components/UI/ButtonCom'
 
-// const jsonData = { "slots" : {
-//     "slot1": "9:00am to 9:30am",
-//     "slot2": "9:30am to 10:00am",
-//     "slot3": "10:00am to 10:30am",
-//     "slot4": "10:30am to 11:00am",
-//  }
-// }
-const slotData = [
-    {
-    id: "slot1",
-    slot: "9:00am to 9:30am",
-    },
-    {
-    id: "slot2",
-    slot: "9:30am to 10:00am",
-    },
-    {
-    id: "slot3",
-    slot: "10:00am to 10:30am",
-    }
-  ];
-
 const BookAppointment = props => {
     const doctorId = props.navigation.getParam('doctorId');
     const hospitalId = props.navigation.getParam('hospitalId');
+    const slots = props.navigation.getParam('slots');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedbtn, setSelectedbtn] = useState(null);
-
+    console.log('==============slots======================');
+    console.log(slots);
+    const availableSlots = []
+    for(key in slots) {
+        availableSlots.push({
+            id: key,
+            slot: slots[key].slot
+        })
+    }
+    console.log(availableSlots);
+    console.log('====================================');
     // const [isPressed, setIsPressed] = useState(false);
     // const handlePressed = () => {
     //     setIsPressed(!isPressed);
@@ -135,7 +124,7 @@ const BookAppointment = props => {
                     <Text style={styles.slotText}>Available Slots: </Text>
                     <FlatList
                         extractData={selectedbtn}
-                        data={slotData}
+                        data={availableSlots}
                         keyExtractor={(item) => item.id}
                         renderItem={({item}) => (
                             <TouchableOpacity
@@ -174,7 +163,7 @@ const BookAppointment = props => {
                                 doctorId,
                                 hospitalId,
                                 selectedDate,
-                                selectedbtn: slotData.find(prod => prod.id === selectedbtn)
+                                selectedbtn: availableSlots.find(prod => prod.id === selectedbtn)
                             })
                         }}
                     />

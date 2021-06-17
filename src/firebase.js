@@ -5,15 +5,14 @@ import 'firebase/functions'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDxJ4ja_cf5RF3uk9o-2x3fGBAS6Lz-YIA",
-  authDomain: "mztube-c19ef.firebaseapp.com",
-  databaseURL: "https://mztube-c19ef-default-rtdb.firebaseio.com",
-  projectId: "mztube-c19ef",
-  storageBucket: "mztube-c19ef.appspot.com",
-  messagingSenderId: "594899517762",
-  appId: "1:594899517762:web:4b1e98a6c921a83d5648db",
-  measurementId: "G-JEZRK6BLYT",
-  androidClientId: '594899517762-e1tbhtal0pqa9th07vnni1uoj6v8i0ic.apps.googleusercontent.com',
+  apiKey: "AIzaSyCvib1iZmXGjoYLtcRbhLO-D3l-O-aflCY",
+  authDomain: "myhealth-e2b27.firebaseapp.com",
+  databaseURL: "https://myhealth-e2b27.firebaseio.com",
+  projectId: "myhealth-e2b27",
+  storageBucket: "myhealth-e2b27.appspot.com",
+  messagingSenderId: "617167455635",
+  appId: "1:617167455635:web:f125c4fda171c2865ed466",
+  measurementId: "G-XGFLV8GK2Y"
 };
 
 let app;

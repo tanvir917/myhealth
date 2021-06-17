@@ -5,8 +5,9 @@ import * as queryActions from '../../actionCreators/queries'
 import Colors from '../../constants/Colors';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Question from '../queries/Question';
+import { database } from '../../firebase';
 
-const FirstScreen = () => {
+const FirstScreen = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(queryActions.fetchMyQueries())
@@ -21,7 +22,7 @@ const FirstScreen = () => {
         {label: 'Apple', value: 'apple'},
         {label: 'Banana', value: 'banana'}
     ]);
-
+    
   return (
     <View style={{margin: 10, height: '90%'}}>
         <ScrollView style={{height: '80%'}}>
@@ -38,14 +39,12 @@ const FirstScreen = () => {
                 <Question/>
             </View>
         </ScrollView>
-
-        {/* <View
-        style={{
-            borderBottomColor: 'red',
-            borderBottomWidth: 3,
-            marginTop: 10
-        }}
-        /> */}
+        <Button
+            title="Add Doctors"
+            onPress={() => {
+                addDoctors();
+            }}
+        />
         <View 
             style={{height: 40, width: 100, margin: 10,
                 backgroundColor: Colors.buttonColor, borderRadius: 10,
