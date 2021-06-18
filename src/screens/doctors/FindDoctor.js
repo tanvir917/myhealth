@@ -34,9 +34,7 @@ const FindDoctor = props => {
     const Doctor = useSelector(state => state.categoryreducer.availableCategory);
     const doctorData =  selectedbtn === null ? listOfDoctors : listOfDoctors.filter( item => {
       const itemData = item.role.toUpperCase();
-      console.log('itemData',itemData);
       const buttonText = selectedbtn.toUpperCase();
-      console.log('button',buttonText);
       return itemData.indexOf(buttonText) > -1;
     })
     

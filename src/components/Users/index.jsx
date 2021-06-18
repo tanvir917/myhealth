@@ -35,9 +35,6 @@ export default class UsersScreen extends React.Component {
     const user = navigation.getParam('user', {})
     const handleLogout = navigation.getParam('handleLogout')
     const username = user.fullName || user.email || user.login || ''
-    console.log('====================================');
-    console.log(navigation);
-    console.log('====================================');
     return {
       headerLeft: (
         <HeaderButton

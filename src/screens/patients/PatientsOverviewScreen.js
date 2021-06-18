@@ -132,7 +132,6 @@ PatientsOverviewScreen.navigationOptions = navData => {
                 // navigation.navigate('Profile');
                 // } else {
                 navData.navigation.navigate('doctorsList');
-                console.log('hello');
                 //}
             }}
             >

@@ -12,7 +12,7 @@ const DoctorProfile = props =>  {
         state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
     );
     const hospitalData = doctorData.hospital.find(h => h.id === hospitalId)
-    console.log('====================================');
+    console.log('===============d h data=====================');
     console.log(doctorData);
     console.log(hospitalData);
     console.log('====================================');

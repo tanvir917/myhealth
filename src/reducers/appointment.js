@@ -1,4 +1,5 @@
-import { ADD_APPOINTMENT } from "../actionCreators/appointment";
+import { ADD_APPOINTMENT, FETCH_APPOINTMENT } from "../actionCreators/appointment";
+import { database } from "../firebase";
 import Appointment from "../models/appointment";
 
 const initialState = {
@@ -9,7 +10,6 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_APPOINTMENT:
             const newAppointment = new Appointment(
-                new Date().toString(),
                 action.appointmentData.patientId,
                 action.appointmentData.patientName,
                 action.appointmentData.patientEmail,
@@ -26,6 +26,10 @@ export default (state = initialState, action) => {
             return {
                 ...state,//copying old state which is redundant here
                 appointments: state.appointments.concat(newAppointment)//creating a brand new arry order
+            }
+        case FETCH_APPOINTMENT: 
+            return {
+                appointments: action.availableAppointments
             }
     }
 

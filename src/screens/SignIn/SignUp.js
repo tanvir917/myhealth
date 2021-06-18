@@ -106,7 +106,6 @@ const SignUpRedesign = (props) => {
                 } catch (err) {
                     // setError(err.message);
                     // setIsLoading(false);
-                    console.log(err.message);
                     setMessage(<View style={{ ...styles.invalidMessage, backgroundColor: '#09B44D', }}>
                         <Text style={styles.text}>{err.message}</Text>
                     </View>)

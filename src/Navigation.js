@@ -78,7 +78,7 @@ const MenusNavigator = createDrawerNavigator({
 })
 
 const AppNavigatorD = createSwitchNavigator({
-  //AuthNavigator: AuthNavigator,
+  AuthNavigator: AuthNavigator,
   MenusNavigator: MenusNavigator,
   VideoNavigator: VideoNavigator,
 })

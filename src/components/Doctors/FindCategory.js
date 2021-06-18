@@ -19,9 +19,6 @@ return(
            <TouchableCmp
             onPress={() => {
                 onBtnPress(item.id)
-                console.log('====================================');
-                console.log(item.id);
-                console.log('====================================');
             }}
            >
                <View style={styles.card}>

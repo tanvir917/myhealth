@@ -41,18 +41,15 @@ const SignInWelcomeBack = (props) => {
 
 
     const handleSignIn = async () => {
-        console.log('dispatched2');
         let action;
         action = authActions.login(
             email,
             password
         );
-        console.log('dispatched1');
         setMessage(false)
         setIsLoading(true);
         try {
             await dispatch(action);
-            console.log('dispatched');
             props.navigation.push('Home');
         } catch (err) {
             setMessage(true)

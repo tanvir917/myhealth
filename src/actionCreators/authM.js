@@ -33,13 +33,9 @@ export const LOGOUT = 'LOGOUT';
             }		             
 
               const resData = await response.json();
-             console.log(resData);
 
               dispatch({ type: SIGNUP, token: resData.idToken, userId: resData.localId, displayName: resData.displayName, email: resData.email });
          } catch (err) {
-             console.log('printing error: ');
-             console.log(err);
-             console.log('finishing error');
              throw err;
          }
      }
@@ -85,12 +81,8 @@ export const LOGOUT = 'LOGOUT';
             }
 
             const resData = await response.json();
-            console.log(resData);
             dispatch({ type: LOGIN, token: resData.idToken, userId: resData.localId, displayName: resData.displayName, email: resData.email }); 
         } catch (err) {
-            //console.log('printing error: ');
-            console.log(err);	             
-            //console.log('finishing error');
             throw err;
         }		         
     }		     

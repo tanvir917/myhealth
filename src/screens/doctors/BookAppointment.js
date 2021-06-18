@@ -22,8 +22,6 @@ const BookAppointment = props => {
     const slots = props.navigation.getParam('slots');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedbtn, setSelectedbtn] = useState(null);
-    console.log('==============slots======================');
-    console.log(slots);
     const availableSlots = []
     for(key in slots) {
         availableSlots.push({
@@ -31,8 +29,6 @@ const BookAppointment = props => {
             slot: slots[key].slot
         })
     }
-    console.log(availableSlots);
-    console.log('====================================');
     // const [isPressed, setIsPressed] = useState(false);
     // const handlePressed = () => {
     //     setIsPressed(!isPressed);
@@ -46,7 +42,8 @@ const BookAppointment = props => {
 
     const onDateChange = (date) => {
         //function to handle the date change
-        setSelectedDate(date);
+        const dd = date.toISOString()
+        setSelectedDate(dd);
     };
     
     // const slots = jsonData.slots
@@ -110,7 +107,7 @@ const BookAppointment = props => {
                         onDateChange={onDateChange}
                     />
                     </Card>
-                    <View style={styles.textStyle}>
+                    {/* <View style={styles.textStyle}>
                         <Text style={styles.textStyle}>
                             Selected Date :
                         </Text>
@@ -118,9 +115,9 @@ const BookAppointment = props => {
                             {selectedDate ? selectedDate.toString() : ''}
                             {console.log(selectedDate)}
                         </Text>
-                    </View>
+                    </View> */}
                 </View>
-                <View>
+                <View style={{marginTop: 20, marginBottom: 10}}>
                     <Text style={styles.slotText}>Available Slots: </Text>
                     <FlatList
                         extractData={selectedbtn}
@@ -130,9 +127,6 @@ const BookAppointment = props => {
                             <TouchableOpacity
                                 onPress={() => {
                                     onBtnPress(item.id)
-                                    console.log('====================================');
-                                    console.log(item.id);
-                                    console.log('====================================');
                                 }}>
                                 <Card
                                     style={{}}
@@ -159,12 +153,22 @@ const BookAppointment = props => {
                         textStyle={{color: 'white'}}
                         onSelect={() => {
                             //dispatch(appointmentActions.addAppointment(selectedDate, selectedbtn, doctorId, hospitalId));
-                            props.navigation.navigate('CheckAppointment', {
+                            selectedDate && selectedbtn ? (
+                                props.navigation.navigate('CheckAppointment', {
                                 doctorId,
                                 hospitalId,
                                 selectedDate,
                                 selectedbtn: availableSlots.find(prod => prod.id === selectedbtn)
                             })
+                            ) : (
+                                Alert.alert(
+                                    "Input Failed",
+                                    "Please Select Date and Time",
+                                    [
+                                        { text: "OK", onPress: () => console.log("OK Pressed") }
+                                    ]
+                                )
+                            )
                         }}
                     />
             </View>
@@ -204,7 +208,8 @@ const BookAppointment = props => {
         marginLeft: 10,
         fontSize: 16,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
+        marginBottom: 10,
     }
   });
 
