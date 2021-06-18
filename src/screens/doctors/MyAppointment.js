@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
     SafeAreaView,
     FlatList,
@@ -6,16 +6,20 @@ import {
     View, Text, TouchableHighlight, Image
   } from 'react-native';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import DoctorItem from '../../components/Doctors/DoctorItem';
-//import { HeaderBackButton } from "react-navigation-stack";
+import * as appointmentActions from '../../actionCreators/appointment';
 
 const MyAppointment = props => {
+  const dispatch = useDispatch();
     const appointments = useSelector(
         state => state.appointment.appointments
     );
+    useEffect(() => {
+      dispatch(appointmentActions.fetchAppointments())
+    }, [])
     console.log('==============myappointments======================');
-    console.log(appointments);
+    console.log(Object.values(appointments));
     console.log('====================================');
     const userEmail = useSelector(state => state.authM.email);
     const userName = useSelector(state => state.authM.displayName);
@@ -33,7 +37,7 @@ const MyAppointment = props => {
             </View> 
         : 
           <FlatList
-            data={appointments} 
+            data={Object.values(appointments)} 
             numColumns={1}
             keyExtractor={item => item.id} 
             renderItem={itemData => <DoctorItem 
@@ -77,9 +81,6 @@ const MyAppointment = props => {
   }
 
 MyAppointment.navigationOptions = navData => {
-    console.log('====================================');
-    console.log(navData);
-    console.log('====================================');
     return {
         headerTitle: 'My Appointment',
         headerRight:

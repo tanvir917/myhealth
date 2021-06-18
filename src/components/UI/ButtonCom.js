@@ -25,7 +25,6 @@ const ButtonCom = props => {
 
 const styles = StyleSheet.create({
     doctorlist: {
-        
         margin: '5%',
     },
     touchable: {

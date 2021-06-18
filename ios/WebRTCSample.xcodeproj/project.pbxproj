@@ -89,6 +89,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				EA660FAF469D3A80E3363CAE /* Pods */,
+				9B2C230FC56048189B50BBF6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -101,6 +102,14 @@
 				13B07F961A680F5B00A75B9A /* WebRTC sample.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9B2C230FC56048189B50BBF6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		EA660FAF469D3A80E3363CAE /* Pods */ = {
@@ -142,7 +151,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {

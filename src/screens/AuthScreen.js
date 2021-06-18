@@ -6,7 +6,6 @@ import React, { useReducer, useCallback, useEffect, useState } from 'react';
 
   import Input from '../components/UI/Input';
  import Card from '../components/UI/Card';
- //import { ScrollView } from 'react-native-gesture-handler';
  import Colors from '../constants/Colors';
 import * as authActions from '../actionCreators/authM';
 

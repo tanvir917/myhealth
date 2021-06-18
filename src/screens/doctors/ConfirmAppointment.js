@@ -6,7 +6,7 @@ import PatientInfo from '../../components/Doctors/PatientInfo'
 
 const ConfirmAppointment = props => {
     const appointments = useSelector(state => state.appointment.appointments);
-    console.log('====================================');
+    console.log('====================apms================');
     console.log(appointments);
     console.log('====================================');
     return (

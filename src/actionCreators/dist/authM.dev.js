@@ -61,7 +61,6 @@ var signup = function signup(displayName, email, password) {
 
           case 14:
             resData = _context.sent;
-            console.log(resData);
             dispatch({
               type: SIGNUP,
               token: resData.idToken,
@@ -75,9 +74,6 @@ var signup = function signup(displayName, email, password) {
           case 19:
             _context.prev = 19;
             _context.t0 = _context["catch"](0);
-            console.log('printing error: ');
-            console.log(_context.t0);
-            console.log('finishing error');
             throw _context.t0;
 
           case 25:
@@ -150,7 +146,6 @@ var login = function login(email, password) {
 
           case 14:
             resData = _context2.sent;
-            console.log(resData);
             dispatch({
               type: LOGIN,
               token: resData.idToken,
@@ -164,8 +159,7 @@ var login = function login(email, password) {
           case 19:
             _context2.prev = 19;
             _context2.t0 = _context2["catch"](0);
-            //console.log('printing error: ');
-            console.log(_context2.t0); //console.log('finishing error');
+             //console.log('finishing error');
 
             throw _context2.t0;
 
