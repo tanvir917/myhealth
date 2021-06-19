@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "myhealth-e2b27.appspot.com",
   messagingSenderId: "617167455635",
   appId: "1:617167455635:web:f125c4fda171c2865ed466",
-  measurementId: "G-XGFLV8GK2Y"
+  measurementId: "G-XGFLV8GK2Y",
 };
 
 let app;

@@ -15,11 +15,39 @@ import MenuItem from '../../components/Patients/MenuItem';
 import { SearchBar } from 'react-native-elements';
 import { UserOutlined, StarOutlined } from '@ant-design/icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { auth, database } from '../../firebase';
+import * as authActions from '../../actionCreators/authM';
 
 const PatientsOverviewScreen = props => {
+    const dispatch = useDispatch();
     const products = useSelector(state => state.menus.availableProducts);
     const userEmail = useSelector(state => state.authM.email);
     const userName = useSelector(state => state.authM.displayName);
+    const userInfo = useSelector(state => state.authM.userInfo)
+    
+    console.log('==============userInfo p======================');
+    console.log(userInfo);
+    console.log('====================================');
+
+    const tryLogin = async () => {
+        const uid = auth.currentUser ? auth.currentUser.uid : null;
+        if (uid) {
+          const userData = await database.ref('users').child(uid).once('value')
+          dispatch(
+            authActions.authenticate(
+              uid,
+              userData.val(),
+              360000000
+            )
+          );
+        }
+      }
+      //tryLogin();
+    
+      useEffect(() => {
+        tryLogin();
+      }, [auth.currentUser])
+
     useEffect(() => {
         LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
     }, [])
@@ -131,7 +159,7 @@ PatientsOverviewScreen.navigationOptions = navData => {
                 // if (auth.currentUser && userId) {
                 // navigation.navigate('Profile');
                 // } else {
-                navData.navigation.navigate('doctorsList');
+                navData.navigation.navigate('DoctorHome');
                 //}
             }}
             >

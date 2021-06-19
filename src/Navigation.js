@@ -24,6 +24,7 @@ import AppointmentDetail from '../src/screens/doctors/AppointmentDetail'
 import DoctorProfile from '../src/screens/doctors/DoctorProfile'
 import Login from './containers/Auth/Login'
 import FirstScreen from './screens/queries/FirstScreen';
+import DoctorHome from './screens/doctors/DoctorHome';
 
 const VideoNavigator = createSwitchNavigator({
   CheckAuth,
@@ -65,6 +66,7 @@ const ProductsNavigator = createStackNavigator(
     DoctorProfile: DoctorProfile,
     Login: Login,
     FirstScreen: FirstScreen,
+    DoctorHome: DoctorHome,
   });
 
 const AuthNavigator = createStackNavigator({

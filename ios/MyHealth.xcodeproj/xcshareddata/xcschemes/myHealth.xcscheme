@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "WebRTC sample.app"
-               BlueprintName = "WebRTCSample"
-               ReferencedContainer = "container:WebRTCSample.xcodeproj">
+               BlueprintName = "myHealth"
+               ReferencedContainer = "container:myHealth.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "WebRTC sample.app"
-            BlueprintName = "WebRTCSample"
-            ReferencedContainer = "container:WebRTCSample.xcodeproj">
+            BlueprintName = "myHealth"
+            ReferencedContainer = "container:myHealth.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -69,8 +69,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "WebRTC sample.app"
-            BlueprintName = "WebRTCSample"
-            ReferencedContainer = "container:WebRTCSample.xcodeproj">
+            BlueprintName = "myHealth"
+            ReferencedContainer = "container:myHealth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,8 +86,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "WebRTC sample.app"
-            BlueprintName = "WebRTCSample"
-            ReferencedContainer = "container:WebRTCSample.xcodeproj">
+            BlueprintName = "myHealth"
+            ReferencedContainer = "container:myHealth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

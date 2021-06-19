@@ -12,13 +12,8 @@ const DoctorProfile = props =>  {
         state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
     );
     const hospitalData = doctorData.hospital.find(h => h.id === hospitalId)
-    console.log('===============d h data=====================');
-    console.log(doctorData);
-    console.log(hospitalData);
-    console.log('====================================');
     return (
         <ScrollView style={styles.fullView}>
-
         <View style={{ alignItems: 'center', overflow: 'visible' }}>
             <View >
                 <Card style={styles.Cardstyle}>
@@ -125,17 +120,13 @@ const styles = StyleSheet.create({
         width: '95%',
         alignItems: 'center',
         marginTop: '2%'
-      
-
     },
     commoncard: {
         backgroundColor: '#F4F9FF',
         height: 50,
         maxHeight: 100,
         padding: '3%', 
-        marginLeft: '2.5%',
-        
-        
+        marginLeft: '2.5%',  
     }
     ,
     commonbutton: {
