@@ -61,7 +61,9 @@ const PatientItem = props => {
                                         style={{ height: 30, width: 30, borderRadius: 8, marginRight: 8,
                                         borderWidth: 2, borderColor: '#def0ff', justifyContent: 'center', alignItems:'center',
                                     }}>
-                                        <MAT name="call" size={15} />
+                                        <TouchableCmp onPress={props.onSelectCall} useForeground>
+                                            <MAT name="call" size={15} />
+                                        </TouchableCmp>
                                     </Card>
                                     <Card 
                                         style={{ height: 30, width: 30, borderRadius: 8, 

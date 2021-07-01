@@ -12,9 +12,16 @@ import * as appointmentActions from '../../actionCreators/appointment';
 
 const MyAppointment = props => {
   const dispatch = useDispatch();
+
+    const userId = useSelector(state => state.authM.userId)
+    const userInfo = useSelector(state => state.authM.userInfo)
     const appointments = useSelector(
         state => state.appointment.appointments
     );
+    const dd = appointments ? Object.values(appointments) : null
+    const apDataForPatientView = dd && userId ? dd.filter(prod => prod.patientId === userId) : null
+    const appointmentData = dd && userId ? dd.filter(prod => prod.doctorId === userId) : null
+
     useEffect(() => {
       dispatch(appointmentActions.fetchAppointments())
     }, [])
@@ -37,7 +44,7 @@ const MyAppointment = props => {
             </View> 
         : 
           <FlatList
-            data={Object.values(appointments)} 
+            data={userInfo && userInfo.isAdmin ? appointmentData : apDataForPatientView} 
             numColumns={1}
             keyExtractor={item => item.id} 
             renderItem={itemData => <DoctorItem 

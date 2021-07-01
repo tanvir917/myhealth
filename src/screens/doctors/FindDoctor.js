@@ -75,7 +75,7 @@ const FindDoctor = props => {
             name={itemData.item.name}
             role={itemData.item.role}
             degree={itemData.item.degree}
-            address={itemData.item.hospital[0].title}
+            address='Nothing'
             iconName='graduation-cap'
             iconType={Icon}
             onSelect={() => {
@@ -120,7 +120,7 @@ const FindDoctor = props => {
                                         source={{uri: item.image}} 
                                     />
                                   </View>
-                                  <View style={{justifyContent: 'center'}}>
+                                  <View style={styles.textContainer}>
                                       <View>
                                               <Text>{item.Name}</Text>
                                       </View>
@@ -180,18 +180,27 @@ const FindDoctor = props => {
 
   const styles = StyleSheet.create({
     imageContainer: {
-        margin:4,
+        margin: 6,
+        marginLeft: 10,
         width: '25%',
         height: '80%',
         borderRadius: 18,
         overflow: 'hidden'
     },
+    textContainer: {
+      width: '70%',
+      justifyContent: 'center',
+      marginLeft: 5,
+      marginRight: 5,
+},
     image: {
         width: '100%',
         height: '100%'
     },
     card: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: 50,
+        width: 120,
     },
 })
 

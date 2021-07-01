@@ -9,6 +9,10 @@ const ConfirmAppointment = props => {
     console.log('====================apms================');
     console.log(appointments);
     console.log('====================================');
+    const userInfo = useSelector(state => state.authM.userInfo);
+    const patientName = userInfo.name
+    const patientId = userInfo.id
+    const patientEmail = userInfo.email
     return (
         <View style={{}}>
             <View style={{margin: 15, marginLeft: 25, justifyContent: 'center', alignItems: 'center'}}>
@@ -19,13 +23,13 @@ const ConfirmAppointment = props => {
             </View>
             <View style={styles.patientInfo}>
                 <PatientInfo    
-                    patientImage="https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg"
-                    patientName='Tanvir Islam'
                     appointmentDate={appointments.date}
                     appointmentTime={appointments.slot}
-                    patientContact='+01714112961'
+                    patientImage={userInfo.avatar}
+                    patientName={userInfo.name}
+                    patientContact={userInfo.phone}
                     doctorFee='500 BDT'
-                    patientAddress='Modhubag, Mogbazar, Dhaka'
+                    patientAddress={userInfo.address}
                     info='Patient Information'
                 />
             </View>

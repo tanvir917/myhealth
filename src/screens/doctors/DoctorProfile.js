@@ -11,7 +11,9 @@ const DoctorProfile = props =>  {
     const doctorData = useSelector(state => 
         state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
     );
-    const hospitalData = doctorData.hospital.find(h => h.id === hospitalId)
+    
+    const hosData = Object.values(doctorData.hospital)
+    const hospitalData = hosData.find(h => h.id === hospitalId)
     return (
         <ScrollView style={styles.fullView}>
         <View style={{ alignItems: 'center', overflow: 'visible' }}>

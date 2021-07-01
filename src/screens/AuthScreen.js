@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback, useEffect, useState } from 'react';
- import { View, ScrollView, StyleSheet, ActivityIndicator, Alert, KeyboardAvoidingView } from 'react-native';
+ import { View, ScrollView, StyleSheet, ActivityIndicator, Alert, KeyboardAvoidingView, Text } from 'react-native';
  import { Button } from "react-native-elements"
  import { LinearGradient } from 'react-native-linear-gradient';
  import { useDispatch } from 'react-redux';
@@ -79,8 +79,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
    const authHandler = async () => {	         
         let action;	         
         if (isSignup) {		             
-            action = authActions.signup(
-            formState.inputValues.displayName,	                 
+            action = authActions.signup(	                 
             formState.inputValues.email,     
             formState.inputValues.password		             
         );		         
@@ -116,7 +115,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
              <View style={styles.gradient}>
                  <Card style={styles.authContainer}>
                      <ScrollView>
-                     {isSignup ? (
+                     {/* {isSignup ? (
                         <Input 
                             id="displayName" 
                             label="E-Mail" 
@@ -126,7 +125,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
                             errorText="Please enter a valid name."
                             onInputChange={inputChangeHandler}
                             initialValue=""
-                        />): (null)}
+                        />): (null)} */}
                          <Input 
                              id="email" 
                              label="E-Mail" 
@@ -171,6 +170,9 @@ import Icon from 'react-native-vector-icons/AntDesign';
                          </View>
                      </ScrollView>
                  </Card>
+                 <View style={{marginTop: 10}}>
+                     <Text>= or =</Text>
+                 </View>
                  <View style={styles.buttonContainerStyle}>
                     <Button
                         icon={
@@ -178,7 +180,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
                                 <Icon name='google' size={30} />
                             </View>
                         }
-                        buttonStyle={{ ...styles.buttonStyle, paddingRight: "21%", borderRadius: 10 }}
+                        buttonStyle={{ ...styles.buttonStyle}}
                         type="outline"
                         title="Sign in with Google"
                         titleStyle={styles.buttonTextStyle}
@@ -214,7 +216,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
          height: '100%',
          width: '100%',
          justifyContent: 'center',
-         alignItems: 'center'
+         alignItems: 'center',
+         backgroundColor: colors.backgroundColor
      },
      authContainer: {
          width: '80%',

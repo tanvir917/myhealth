@@ -15,9 +15,6 @@ export const AUTHENTICATE_USER_INFO = 'AUTHENTICATE_USER_INFO';
 export const authenticate = (userId, userData, expiryTime) => {
     return dispatch => {
       dispatch(setLogoutTimer(expiryTime));
-      console.log('====================================');
-      console.log(userId);
-      console.log('====================================');
       dispatch({ type: AUTHENTICATE, userId: userId, userInfo: userData })
     }
   }
@@ -211,12 +208,14 @@ export const authenticate = (userId, userData, expiryTime) => {
   
   const createUserObj = (uid, email, user) => {
     const uObj = {
-      name: user ? user.displayName : '@userName',
+      name: email.split('@')[0],
       avatar: 'https://res.cloudinary.com/dv244dkbr/image/upload/v1619297628/MzTube/user-dummy-200x200-1_czlwxk.png',
       email: email,
       isAdmin: false,
       isActive: false,
-      created_at: Date.now()
+      created_at: Date.now(),
+      phone: '+8801700000000',
+      address: 'Edit your address',
     };
     database.ref('users').child(uid).set(uObj);
   }
@@ -253,8 +252,8 @@ export const authenticate = (userId, userData, expiryTime) => {
     )
   }
 
- export const logout = () => {
+  export const logout = () => {
     return {
-        type: LOGOUT
+      type: LOGOUT
     }
-} 
+  }

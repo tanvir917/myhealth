@@ -1,28 +1,50 @@
-import React, { useEffect } from "react";
-import { ScrollView, View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import DoctorFile from '../../components/Doctors/DoctorFile'
+import React, { useEffect, useState } from "react";
+import { ScrollView, View, Text, StyleSheet, FlatList, Image, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../../components/UI/Card';
-import ProfileNavigation from '../../ProfileNavigation';
 import ButtonCom from "../../components/UI/ButtonCom";
 import ButtonWithImage from "../../components/UI/ButtonWithImage";
 import Colors from "../../constants/Colors";
 import * as appointmentActions from '../../actionCreators/appointment';
+import * as authActions from '../../actionCreators/authM';
 import PatientItem from '../../components/Patients/PatientItem';
+import DoctorItem from '../../components/Doctors/DoctorItem';
 import FA from 'react-native-vector-icons/FontAwesome';
+import { database, auth } from '../../firebase'
+import * as doctorActions from '../../actionCreators/doctorList';
 
 const DoctorHome = props =>  {
     const dispatch = useDispatch();
+    const [doctorInfo, setDoctorInfo] = useState();
+    const userId = useSelector(state => state.authM.userId)
     const appointments = useSelector(
         state => state.appointment.appointments
     );
+    const dd = appointments ? Object.values(appointments) : null
+    const apDataForPatientView = dd && userId ? dd.filter(prod => prod.patientId === userId) : null
+    const appointmentData = dd && userId ? dd.filter(prod => prod.doctorId === userId) : null
     const userInfo = useSelector(state => state.authM.userInfo)
+    const listOfDoctors = useSelector(state => state.doctorList.availableDoctors);
+    
     useEffect(() => {
       dispatch(appointmentActions.fetchAppointments())
     }, [])
-    console.log('==============userInfo d h======================');
-    console.log(userInfo);
-    console.log('====================================');
+    useEffect(() => {
+      setDoctorInfo(listOfDoctors.find( prod=>prod.id === userId))
+    },[listOfDoctors, userId])
+    useEffect(() => {
+      dispatch(doctorActions.fetchDoctors())
+    }, [])
+
+    const logout = () => {
+      // setLogoutLoaderControl(true);
+        auth.signOut().then(() => {
+          dispatch(authActions.logout());
+        });
+        // setLogoutLoaderControl(false);
+        props.navigation.navigate('Auth');
+      // }, 1000);
+    };
     return (
       <ScrollView style={styles.fullView}>
         <View >
@@ -30,12 +52,14 @@ const DoctorHome = props =>  {
               <View style={styles.parentView}>
                 <View style={{ marginLeft: '5%', flexDirection: 'row' }}>
                     <Image style={styles.image}
-                        source={{uri: "https://lh3.googleusercontent.com/a-/AOh14GjRCrYaP0qiRWz0fHxR2vj66CeMQBXEPzUBTlC5IQ=s96-c"}} 
+                        source={{uri: userInfo ? userInfo.avatar : (
+                          <FA name='user' size={35}/>
+                        )}}
                     />
                     <View style={{ marginLeft: 15}}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 30}}>
                           <Text style={{ fontWeight: "bold", fontSize: 18, color: "black" }}
-                              >{userInfo.name}
+                              >{userInfo ? userInfo.isAdmin ? (doctorInfo ? doctorInfo.name : 'Name') : userInfo.name : 'Name'}
                           </Text>
                           <ButtonCom
                             title='Edit'
@@ -48,13 +72,13 @@ const DoctorHome = props =>  {
                         </View>
                         <View style={{marginTop: -30}}>
                           <Text style={{ color: "blue", fontSize: 14, paddingTop: 4, paddingBottom: 4 }}
-                            >Role
+                            >{userInfo ? userInfo.isAdmin ? (doctorInfo ? doctorInfo.role : 'Role') : userInfo.email : 'Role'}
                           </Text>
                           <View>
-                            <Text style={{ paddingBottom: 5, paddingTop: 2 }}>Degree</Text>
+                            <Text style={{ paddingBottom: 5, paddingTop: 2 }}>{userInfo ? userInfo.isAdmin ? (doctorInfo ? doctorInfo.degree : 'Degree') : userInfo.phone : 'Degree'}</Text>
                           </View>
                         </View>
-                        <View style={{flexDirection: 'row', marginLeft: -7 }}>
+                        {/* <View style={{flexDirection: 'row', marginLeft: -7 }}>
                           <View style={styles.commonbutton}>
                               <ButtonWithImage
                                 title='Call Now'
@@ -77,12 +101,15 @@ const DoctorHome = props =>  {
                                 }}
                               />
                           </View>
-                      </View>
+                      </View> */}
                     </View>
                     
                   </View>
+                  <Button title="Logout" onPress={logout}/>
                 </View>
-            <View style={{ alignItems: 'center', flexDirection: 'row', width: '100%', marginTop: '3%', marginBottom: '4%', justifyContent: 'center' }}>
+            {userInfo && userInfo.isAdmin ? 
+            (
+              <View style={{ alignItems: 'center', flexDirection: 'row', width: '100%', marginTop: '3%', marginBottom: '4%', justifyContent: 'center' }}>
                 <Card style={styles.commoncard}>
                     <View style={styles.text1}><Text style={styles.textStyle}>Chamber</Text></View>
                     <View style={styles.text1}><Text>Mohakhali, Dhaka</Text></View>
@@ -99,12 +126,16 @@ const DoctorHome = props =>  {
                         <Text style={{...styles.textStyle, marginLeft: 10}}>7</Text>
                       </View>
                     </View>
-                </Card>
-            </View>
+                 </Card>
+             </View>
+            ) : (
+              null
+            )}
           </View>
 
-          <View 
-            style={{ backgroundColor: '#fff', borderTopLeftRadius: 40, borderTopRightRadius: 40 }}>
+            <View 
+              style={{ backgroundColor: '#fff', borderTopLeftRadius: 40, borderTopRightRadius: 40 }}>
+            {userInfo && userInfo.isAdmin ? (
             <View 
               style={{ alignItems: 'center', 
                 flexDirection: 'row', width: '95%', marginTop: '7%', marginBottom: '4%', 
@@ -128,6 +159,9 @@ const DoctorHome = props =>  {
                       <View style={styles.text1}><Text>500 BDT</Text></View>
                   </Card> */}
             </View>
+            ) : (
+            null
+          )}
             <View style={{flexDirection: 'row', justifyContent:'space-between', marginLeft: 0, marginRight: 10}}>
               <ButtonCom
                 title='Pending Appointment'
@@ -147,35 +181,65 @@ const DoctorHome = props =>  {
               />
             </View>
             
+            {userInfo && userInfo.isAdmin ? (
             <View>
             <FlatList
-              data={Object.values(appointments)} 
+              data={appointmentData}
               numColumns={1}
               keyExtractor={item => item.id} 
               renderItem={itemData => <PatientItem 
                   image={itemData.item.doctorImage}
-                  name={itemData.item.doctorName}
-                  role={itemData.item.doctorRole}
-                  degree={itemData.item.date.toString().slice(0, 15)}
+                  name={itemData.item.patientName}
                   address={itemData.item.slot}
                   appStatus={itemData.item.appStatus}
                   onSelect={() => {
                       props.navigation.navigate('AppointmentDetail', {
-                        patientId: userEmail,
+                        patientId: 'uu',
                         patientName: userName,
                         doctorId: itemData.item.doctorId,
                         doctorName: itemData.item.doctorName,
                         doctorImage: itemData.item.doctorImage,
                         hospitalId: itemData.item.hospitalId,
                         appDate: itemData.item.date,
-                        appTime: itemData.item.slot,
-                        
+                        appTime: itemData.item.slot,         
                       });
                   }}
               />} 
             />
             </View>
-
+            ) : (
+              <View>
+            <FlatList
+              data={apDataForPatientView}
+              numColumns={1}
+              keyExtractor={item => item.id} 
+              renderItem={itemData => <PatientItem 
+                  image={itemData.item.doctorImage}
+                  name={itemData.item.doctorName}
+                  address={itemData.item.slot}
+                  appStatus={itemData.item.appStatus}
+                  onSelectCall={() => {
+                    props.navigation.navigate('CheckAuth', {
+                        patientEmail: userInfo.email,
+                        patientName: userInfo.name 
+                    })
+                    }}
+                  onSelect={() => {
+                      props.navigation.navigate('AppointmentDetail', {
+                        patientId: userId,
+                        patientName: userInfo.name,
+                        doctorId: itemData.item.doctorId,
+                        doctorName: itemData.item.doctorName,
+                        doctorImage: itemData.item.doctorImage,
+                        hospitalId: itemData.item.hospitalId,
+                        appDate: itemData.item.date,
+                        appTime: itemData.item.slot,         
+                      });
+                  }}
+              />} 
+            />
+            </View>
+            )}
           </View>
             
         </View>

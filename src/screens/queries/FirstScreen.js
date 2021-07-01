@@ -1,64 +1,138 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Button, TouchableOpacity, SafeAreaView, SafeAreaViewComponent, ScrollView } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Component, Fragment } from 'react';
+import { View, Text, Button, TouchableOpacity, FlatList, Image, ScrollView, StyleSheet } from 'react-native';
+import SearchableDropdown from 'react-native-searchable-dropdown';
+import { symtomps } from '../../../data'
 import * as queryActions from '../../actionCreators/queries'
-import Colors from '../../constants/Colors';
-import DropDownPicker from 'react-native-dropdown-picker';
-import Question from '../queries/Question';
-import { database } from '../../firebase';
 
-const FirstScreen = (props) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(queryActions.fetchMyQueries())
-    }, [])
-    const queries = useSelector(state => state.queries.myQueries);
-    console.log('========================qq============');
-    console.log(queries["precautions to take"]);
-    console.log('====================================');
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-        {label: 'Apple', value: 'apple'},
-        {label: 'Banana', value: 'banana'}
-    ]);
-    
+export default class FirstScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedItems: [
+        
+      ],
+      array: []
+    }
+  }
+  
+  render() {
+      console.log('================se items====================');
+      console.log(this.state.selectedItems);
+      console.log(this.state.array);
+      console.log('====================================');
   return (
-    <View style={{margin: 10, height: '90%'}}>
-        <ScrollView style={{height: '80%'}}>
-            <View >
-                <Question/>
+    <View>
+        <Fragment>
+          {/* Multi */}
+          <View style={{margin: 15}}>
+                <Text style={{fontSize: 16, fontWeight: 'bold', marginBottom: 5}}>What problem are you facing the most?</Text>
+                <Text style={{fontSize: 14, fontWeight: 'bold', marginTop: 5, color: 'blue'}}>Select your symptoms here</Text>
             </View>
-            <View >
-                <Question/>
-            </View>
-            <View >
-                <Question/>
-            </View>
-            <View >
-                <Question/>
-            </View>
-        </ScrollView>
-        <Button
-            title="Add Doctors"
-            onPress={() => {
-                addDoctors();
+          <SearchableDropdown
+            multi={true}
+            selectedItems={this.state.selectedItems}
+            onItemSelect={(item) => {
+              const items = this.state.selectedItems;
+              const arrayItem = this.state.array;
+              items.push(item)
+              arrayItem.push(item.id)
+              this.setState({ selectedItems: items });
+              this.setState({ array: arrayItem })
             }}
-        />
-        <View 
-            style={{height: 40, width: 100, margin: 10,
-                backgroundColor: Colors.buttonColor, borderRadius: 10,
-                justifyContent: 'center', alignItems: 'center'
-            }}>
-            <TouchableOpacity>
-                <Text style={{fontWeight: 'bold', fontSize: 15,}}>
-                    Submit
-                </Text>
-            </TouchableOpacity>
-        </View>
+            containerStyle={{ padding: 5 }}
+            onRemoveItem={(item, index) => {
+              const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
+              const arrayItem = this.state.array.filter((sitem) => sitem !== item.id)
+              this.setState({ selectedItems: items });
+              this.setState({ array: arrayItem })
+            }}
+            itemStyle={{
+              padding: 10,
+              marginTop: 2,
+              backgroundColor: '#ddd',
+              borderColor: '#bbb',
+              borderWidth: 1,
+              borderRadius: 5,
+            }}
+            itemTextStyle={{ color: '#222' }}
+            itemsContainerStyle={{ maxHeight: 140 }}
+            items={symtomps}
+            chip={true}
+            resetValue={false}
+            textInputProps={
+              {
+                placeholder: "Search your symptoms",
+                underlineColorAndroid: "transparent",
+                style: {
+                    padding: 12,
+                    borderWidth: 1,
+                    borderColor: '#ccc',
+                    borderRadius: 5,
+                },
+                onTextChange: () => {}
+              }
+            }
+            listProps={
+              {
+                nestedScrollEnabled: true,
+              }
+            }
+          />
+          {/* Single */}
+          {/* <SearchableDropdown
+            onItemSelect={(item) => {
+              const items = this.state.selectedItems;
+              items.push(item)
+              this.setState({ selectedItems: items });
+            }}
+            containerStyle={{ padding: 5 }}
+            onRemoveItem={(item, index) => {
+              const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
+              this.setState({ selectedItems: items });
+            }}
+            itemStyle={{
+              padding: 10,
+              marginTop: 2,
+              backgroundColor: '#ddd',
+              borderColor: '#bbb',
+              borderWidth: 1,
+              borderRadius: 5,
+            }}
+            itemTextStyle={{ color: '#222' }}
+            itemsContainerStyle={{ maxHeight: 140 }}
+            items={items}
+            defaultIndex={2}
+            resetValue={false}
+            textInputProps={
+              {
+                placeholder: "placeholder",
+                underlineColorAndroid: "transparent",
+                style: {
+                    padding: 12,
+                    borderWidth: 1,
+                    borderColor: '#ccc',
+                    borderRadius: 5,
+                },
+                onTextChange: text => alert(text)
+              }
+            }
+            listProps={
+              {
+                nestedScrollEnabled: true,
+              }
+            }
+        /> */}
+      </Fragment>
+      <View>
+        <Button title='Submit' onPress={
+          () => {
+            this.props.navigation.navigate('ResultScreen', {
+            array: this.state.array
+          })
+          }
+        }/>
+      </View>
     </View>
-
   );
+  }
 }
-
-export default FirstScreen;
