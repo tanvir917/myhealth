@@ -125,7 +125,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.quickblox.sample.reactnative.webrtc"
+        applicationId "com.jtech.myhealth"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

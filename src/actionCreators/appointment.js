@@ -39,18 +39,12 @@ export const addAppointment = (
 };
 
 export const fetchAppointments = () => {
-    console.log('1');
     return async(dispatch, getState) => {
-        console.log('2');
         try {
-            console.log('3');
             database
             .ref('appointment').once('value')
             .then((snapshot) => {
                 const appointments = snapshot.val();
-                console.log('==================tt a==================');
-                console.log(appointments);
-                console.log('====================================');
                 dispatch({
                     type: FETCH_APPOINTMENT,
                     availableAppointments: appointments

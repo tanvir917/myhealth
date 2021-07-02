@@ -1,7 +1,7 @@
 export default {
     primary: '#c2185b',
     accent: '#ffc107',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f4f9ff',
     titleColor: '#016fa0',
     t1: '#424244',
     t2: '#09b44d',

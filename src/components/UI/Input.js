@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     errorText: {
-        fontFamily: 'open-sans',
         color: 'red',
         fontSize: 13
     }

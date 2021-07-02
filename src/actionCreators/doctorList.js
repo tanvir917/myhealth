@@ -24,7 +24,6 @@ export const fetchDoctors = () => {
                             doctors[key].degree,
                             doctors[key].hospital,
                             doctors[key].imageUrl,
-                            doctors[key].slots
                         )
                     )
                 }

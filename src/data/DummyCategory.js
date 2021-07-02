@@ -18,18 +18,18 @@ const CategoryDoctor = [
           ),
     new CategoryDoctors(
         'c4',
-        'Eye Specialist',
+        'Endocrinologist',
         'https://i.ibb.co/zPGjSfb/022-eye.png'
     ),
     new CategoryDoctors(
         'c5',
-        'Cardiologist',
+        'Dermatologists',
         'https://i.ibb.co/VJxPGqv/019-drugs.png'
     ),
     new CategoryDoctors
         (
             'c6',
-            'Cancer Surgeon',
+            'Gastroenterologist',
             'https://i.ibb.co/WKZcXjd/046-syringe.png'
         )
  

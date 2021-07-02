@@ -6,7 +6,6 @@ class Doctor {
         this.degree = degree,
         this.hospital = hospital,
         this.imageUrl = imageUrl;  
-        this.slots = slots;
     }
 } 
 

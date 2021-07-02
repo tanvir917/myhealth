@@ -1,15 +1,26 @@
-import { LOGIN, SIGNUP, LOGOUT } from '../actionCreators/authM';
+import { LOGIN, SIGNUP, AUTHENTICATE, LOGOUT, AUTHENTICATE_USER_INFO } from '../actionCreators/authM';
 
   const initialState = {
      token: null,
      userId: null,
      displayName: null,
      email: null,
+     userInfo: null
  }
 
   export default (state = initialState, action) => {
      switch (action.type) {
-         case LOGIN: 
+        case AUTHENTICATE:  
+            return {
+                userInfo: action.userInfo,
+                userId: action.userId
+            };
+        case AUTHENTICATE_USER_INFO:
+            return {
+                token: action.token,
+                userInfo: action.userInfo
+            }
+         case LOGIN:  
              return {
                  token: action.token,
                  userId: action.userId,

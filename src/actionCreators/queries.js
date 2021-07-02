@@ -1,6 +1,6 @@
 export const GETQUERIES = 'GETQUERIES';
 
-export const fetchMyQueries = () => {
+export const fetchMyQueries = (array) => {
     return async (dispatch, getState) => {
         try{
             const response = await fetch(
@@ -11,15 +11,16 @@ export const fetchMyQueries = () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        "sym1": 1,
-                        "sym2": 2,
-                        "sym3": 3,
-                        "sym4": 4,
-                        "sym5": 5
+                        "sym1": array[0],
+                        "sym2": array[1],
+                        "sym3": array[2],
+                        "sym4": array[3],
+                        "sym5": array[4],
                     })
                 }
             );
             const resData = await response.json();
+            console.log('got data',resData);
             dispatch({ 
                 type: GETQUERIES, 
                 myqueries: resData,

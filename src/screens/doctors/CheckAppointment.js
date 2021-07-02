@@ -15,11 +15,15 @@ const CheckAppointment = props => {
         state.doctorList.availableDoctors.find(prod => prod.id === doctorId)
     );
     //date = selectedDate.slice(0, 10);
-    hospitalData = doctorData.hospital.find(prod => prod.id = hospitalId);
+    const hosData = Object.values(doctorData.hospital)
+    const hospitalData = hosData.find(h => h.id === hospitalId)
     
-    const patientName = useSelector(state => state.authM.displayName);
+    const userInfo = useSelector(state => state.authM.userInfo);
+    const patientName = userInfo.name
     const patientId = useSelector(state => state.authM.userId);
-    const patientEmail = useSelector(state => state.authM.email);
+    const patientEmail = userInfo.email
+
+    console.log(userInfo);
 
     const dispatch = useDispatch();
     return (
@@ -46,13 +50,13 @@ const CheckAppointment = props => {
                         </View>
                         <View style={styles.patientInfo}>
                             <PatientInfo    
-                                patientImage='https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg'
-                                patientName='Tanvir Islam'
+                                patientImage={userInfo.avatar}
+                                patientName={userInfo.name}
                                 appointmentDate={selectedDate.toString().slice(0, 15)}
                                 appointmentTime={selectedbtn.slot}
-                                patientContact='+01714112961'
+                                patientContact={userInfo.phone}
                                 doctorFee='500 BDT'
-                                patientAddress='Modhubag, Mogbazar, Dhaka'
+                                patientAddress={userInfo.address}
                                 info='Patient Information'
                             />
                         </View>
@@ -72,7 +76,8 @@ const CheckAppointment = props => {
                                     selectedDate, selectedbtn.slot, 
                                     hospitalData.location, doctorId, hospitalId
                                 ));
-                                props.navigation.navigate('ConfirmAppointment')
+                                props.navigation.navigate('PaymentScreen')
+                                //props.navigation.navigate('ConfirmAppointment')
                             }}
                         />
                         <ButtonCom

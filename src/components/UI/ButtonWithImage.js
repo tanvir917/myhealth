@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native';
 import Card from './Card';
+import FA from 'react-native-vector-icons/FontAwesome';
 
-const ButtonCom = props => {
+const ButtonWithImage = props => {
     
     let TouchableCmp = TouchableOpacity;
 
@@ -14,8 +15,11 @@ const ButtonCom = props => {
         <Card style={{...styles.doctorlist, ...props.buttonSize}} >
             <View style={{...styles.touchable, ...props.containerStyle}}>
                 <TouchableCmp onPress={props.onSelect} useForeground>
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <FA name={props.iconName} size={15}/>
                     <View style={styles.card}>
                         <Text style={{...styles.title, ...props.textStyle}}>{props.title}</Text>
+                    </View>
                     </View>
                 </TouchableCmp>
             </View>
@@ -25,12 +29,13 @@ const ButtonCom = props => {
 
 const styles = StyleSheet.create({
     doctorlist: {
+        margin: '5%',
     },
     touchable: {
         borderRadius: 10,
         overflow: 'hidden',
         height: '100%',
-        width: '100%'
+        width: '100%',
     },
     title: {
         fontWeight: 'bold',
@@ -38,10 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     card: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-        width: '100%',
+        padding:8
     },
 });
-export default ButtonCom;
+export default ButtonWithImage;
