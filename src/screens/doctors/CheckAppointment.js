@@ -76,7 +76,8 @@ const CheckAppointment = props => {
                                     selectedDate, selectedbtn.slot, 
                                     hospitalData.location, doctorId, hospitalId
                                 ));
-                                props.navigation.navigate('ConfirmAppointment')
+                                props.navigation.navigate('PaymentScreen')
+                                //props.navigation.navigate('ConfirmAppointment')
                             }}
                         />
                         <ButtonCom

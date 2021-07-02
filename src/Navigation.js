@@ -26,6 +26,7 @@ import Login from './containers/Auth/Login'
 import FirstScreen from './screens/queries/FirstScreen';
 import DoctorHome from './screens/doctors/DoctorHome';
 import ResultScreen from './screens/queries/ResultScreen';
+import PaymentScreen from './screens/doctors/PaymentScreen';
 
 const VideoNavigator = createSwitchNavigator({
   CheckAuth,
@@ -61,6 +62,7 @@ const ProductsNavigator = createStackNavigator(
     doctorsList: doctorsList,
     BookAppointment: BookAppointment,
     CheckAppointment: CheckAppointment,
+    PaymentScreen: PaymentScreen,
     ConfirmAppointment: ConfirmAppointment,
     MyAppointment: MyAppointment,
     AppointmentDetail: AppointmentDetail,
